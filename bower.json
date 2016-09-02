@@ -24,7 +24,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular-schema-form": "https://github.com/relational-data-systems/angular-schema-form.git#feature/RSB-138"
+    "angular-schema-form": "https://github.com/relational-data-systems/angular-schema-form.git#develop"
   },
   "devDependencies": {
     "angular-ui-ace": "bower",
