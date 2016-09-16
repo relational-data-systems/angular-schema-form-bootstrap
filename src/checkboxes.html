@@ -7,7 +7,7 @@
          schema-validate="form"
          ng-show="showTitle()">{{form.title}}</label>
 
-  <div class="checkbox" ng-repeat="val in titleMapValues track by $index" >
+  <div ng-if="!form.columns || form.columns === 1" class="checkbox" ng-repeat="val in titleMapValues track by $index" >
     <label>
       <input type="checkbox"
              ng-disabled="form.readonly"
@@ -17,7 +17,27 @@
              name="{{form.key.slice(-1)[0]}}">
       <span ng-bind-html="form.titleMap[$index].name"></span>
     </label>
-
   </div>
+    
+  <div ng-if="form.columns > 1" class="row">
+    <div ng-repeat="n in [].constructor(form.columns) track by $index"
+     ng-class="['col-xs-'+12/form.columns, 'col-sm-'+12/form.columns, 'col-md-'+12/form.columns, 'col-lg-'+12/form.columns]">
+     <div ng-hide="true">{{columnIndex = $index}}</div> <!-- Not sure if there is a better way, but I just don't want another controller here... -->
+     <div ng-bind="columnIndex"></div>
+      <div ng-repeat="val in titleMapValues.slice(columnIndex*(titleMapValues.length/form.columns), $last? titleMapValues.length :(columnIndex + 1)*(titleMapValues.length/form.columns)) track by $index">
+        <div ng-bind="'index:' + ($index + columnIndex*(titleMapValues.length/form.columns))"></div>
+            <label>
+              <input type="checkbox"
+                     ng-disabled="form.readonly"
+                     sf-changed="form"
+                     class="{{form.fieldHtmlClass}}"
+                     ng-model="titleMapValues[$index + columnIndex*(titleMapValues.length/form.columns)]"
+                     name="{{form.key.slice(-1)[0]}}">
+              <span ng-bind-html="form.titleMap[$index + columnIndex*(titleMapValues.length/form.columns)].name"></span>
+            </label>
+      </div>
+    </div>
+  </div>
+
   <div class="help-block" sf-message="form.description"></div>
 </div>
