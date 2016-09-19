@@ -17,17 +17,21 @@
     return directive;
   }
 
-
   ColumnController.$inject = ['$scope', '$log'];
 
   /* @ngInject */
   function ColumnController($scope, $log) { 
     var vm = this;
+    var multiColCtrl = $scope.multiColCtrl; // better injected by link function?
+
     vm.colIndex = $scope.$index;
     vm.isLast = $scope.$last;
-    vm.itemsPerColumn = $scope.multiColCtrl.itemsPerColumn;
+    vm.isFirst = $scope.$first;
+    vm.itemsCount = multiColCtrl.itemsPerColumn;
 
-    vm.indexFrom = vm.colIndex * vm.itemsPerColumn;
-    vm.indexTo = vm.indexFrom + vm.itemsPerColumn;
+    // Distribute the items evenlly according to modulus
+    vm.indexFrom = vm.colIndex * (vm.itemsCount + (vm.colIndex < multiColCtrl.modulus ? 1 : 0));
+    vm.indexFrom += (vm.colIndex >= multiColCtrl.modulus ? multiColCtrl.modulus : 0);
+    vm.indexTo = !vm.isLast ? (vm.indexFrom + vm.itemsCount + (vm.colIndex < multiColCtrl.modulus ? 1 : 0)) : multiColCtrl.size;
   }
 })();
