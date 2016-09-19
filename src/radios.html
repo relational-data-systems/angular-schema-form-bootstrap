@@ -15,7 +15,7 @@
     </label>
   </div>
 
-  <rds-multi-columns size="form.titleMap.length" ng-if="form.columns > 1">
+  <rds-multi-columns size="{{form.titleMap.length}}" ng-if="form.columns > 1">
     <!-- Transcluded stuff below -->
     <div class="radio" ng-repeat="item in form.titleMap.slice($parent.colCtrl.indexFrom, $parent.colCtrl.indexTo)">
       <label>

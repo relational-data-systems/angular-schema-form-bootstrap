@@ -19,9 +19,15 @@
 
     function link(scope, element, attrs) {
       // Need a better way to bind these values to controller
-      var size = scope.multiColCtrl.size = scope.$eval(attrs['size']);
-      scope.multiColCtrl.itemsPerColumn = parseInt(size / scope.form.columns);
-      scope.multiColCtrl.modulus = size % scope.form.columns;
+      // var size = scope.multiColCtrl.size = scope.$eval(attrs['size']);
+      // scope.multiColCtrl.itemsPerColumn = parseInt(size / scope.form.columns);
+      // scope.multiColCtrl.modulus = size % scope.form.columns;
+      attrs.$observe('size', function(size) {
+        scope.multiColCtrl.size = size;
+        scope.multiColCtrl.itemsPerColumn = parseInt(size / scope.form.columns);
+        scope.multiColCtrl.modulus = size % scope.form.columns;
+      })
+
     }
 
     return directive;
