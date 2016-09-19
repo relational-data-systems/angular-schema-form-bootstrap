@@ -1,19 +1,19 @@
 <div class="row">
   <div ng-repeat="n in [].constructor(form.columns) track by $index"
-   ng-class="['col-xs-'+mcCtrl.bootstrapCol, 'col-sm-'+mcCtrl.bootstrapCol, 'col-md-'+mcCtrl.bootstrapCol, 'col-lg-'+12/mcCtrl.bootstrapCol]">
-   <div ng-hide="true">{{columnIndex = $index}}</div>
-    <div ng-repeat="val in titleMapValues.slice(columnIndex*mcCtrl.itemsPerColumn, $last? titleMapValues.length :(columnIndex + 1)*mcCtrl.itemsPerColumn) track by $index"
+   ng-class="['col-xs-'+multiColCtrl.bootstrapCol, 'col-sm-'+multiColCtrl.bootstrapCol, 'col-md-'+multiColCtrl.bootstrapCol, 'col-lg-'+12/multiColCtrl.bootstrapCol]">
+  <rds-column>
+    <div ng-repeat="val in titleMapValues.slice(colCtrl.indexOffset, colCtrl.isLast? titleMapValues.length :(colCtrl.columnIndex + 1) * colCtrl.itemsPerColumn) track by $index"
          class="checkbox">
-          <div ng-hide="true">{{ realIndex = $index + columnIndex*mcCtrl.itemsPerColumn }}</div>
           <label>
             <input type="checkbox"
                    ng-disabled="form.readonly"
                    sf-changed="form"
                    class="{{form.fieldHtmlClass}}"
-                   ng-model="titleMapValues[realIndex]"
+                   ng-model="titleMapValues[$index + colCtrl.indexOffset]"
                    name="{{form.key.slice(-1)[0]}}">
-            <span ng-bind-html="form.titleMap[realIndex].name"></span>
+            <span ng-bind-html="form.titleMap[$index + colCtrl.indexOffset].name"></span>
           </label>
     </div>
+  </rds-column>
   </div>
 </div>

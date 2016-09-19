@@ -1,0 +1,15 @@
+<div ng-transclude>
+</div>
+
+<div ng-repeat="val in titleMapValues.slice(colCtrl.indexOffset, colCtrl.isLast? titleMapValues.length :(colCtrl.columnIndex + 1) * colCtrl.itemsPerColumn) track by $index"
+     class="checkbox">
+      <label>
+        <input type="checkbox"
+               ng-disabled="form.readonly"
+               sf-changed="form"
+               class="{{form.fieldHtmlClass}}"
+               ng-model="titleMapValues[$index + colCtrl.indexOffset]"
+               name="{{form.key.slice(-1)[0]}}">
+        <span ng-bind-html="form.titleMap[$index + colCtrl.indexOffset].name"></span>
+      </label>
+</div>

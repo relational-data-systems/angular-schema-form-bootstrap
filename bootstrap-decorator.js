@@ -9,7 +9,8 @@ $templateCache.put("decorators/bootstrap/help.html","<div class=\"helpvalue sche
 $templateCache.put("decorators/bootstrap/radio-buttons.html","<div class=\"form-group schema-form-radiobuttons {{form.htmlClass}}\" ng-class=\"{\'has-error\': form.disableErrorState !== true && hasError(), \'has-success\': form.disableSuccessState !== true && hasSuccess()}\"><div><label class=\"control-label {{form.labelHtmlClass}}\" ng-show=\"showTitle()\">{{form.title}}</label></div><div class=\"btn-group\"><label sf-field-model=\"replaceAll\" class=\"btn {{ (item.value === $$value$$) ? form.style.selected || \'btn-default\' : form.style.unselected || \'btn-default\'; }}\" ng-class=\"{ active: item.value === $$value$$ }\" ng-repeat=\"item in form.titleMap\"><input type=\"radio\" class=\"{{form.fieldHtmlClass}}\" sf-changed=\"form\" style=\"display: none;\" ng-disabled=\"form.readonly\" sf-field-model=\"\" schema-validate=\"form\" ng-value=\"item.value\" name=\"{{form.key.join(\'.\')}}\"> <span ng-bind-html=\"item.name\"></span></label></div><div class=\"help-block\" sf-message=\"form.description\"></div></div>");
 $templateCache.put("decorators/bootstrap/radios-inline.html","<div class=\"form-group schema-form-radios-inline {{form.htmlClass}}\" ng-class=\"{\'has-error\': form.disableErrorState !== true && hasError(), \'has-success\': form.disableSuccessState !== true && hasSuccess()}\"><label class=\"control-label {{form.labelHtmlClass}}\" ng-show=\"showTitle()\" sf-field-model=\"\" schema-validate=\"form\">{{form.title}}</label><div><label class=\"radio-inline\" ng-repeat=\"item in form.titleMap\"><input type=\"radio\" class=\"{{form.fieldHtmlClass}}\" sf-changed=\"form\" ng-disabled=\"form.readonly\" sf-field-model=\"\" ng-value=\"item.value\" name=\"{{form.key.join(\'.\')}}\"> <span ng-bind-html=\"item.name\"></span></label></div><div class=\"help-block\" sf-message=\"form.description\"></div></div>");
 $templateCache.put("decorators/bootstrap/radios.html","<div class=\"form-group schema-form-radios {{form.htmlClass}}\" ng-class=\"{\'has-error\': form.disableErrorState !== true && hasError(), \'has-success\': form.disableSuccessState !== true && hasSuccess()}\"><label class=\"control-label {{form.labelHtmlClass}}\" sf-field-model=\"\" schema-validate=\"form\" ng-show=\"showTitle()\">{{form.title}}</label><div class=\"radio\" ng-repeat=\"item in form.titleMap\"><label><input type=\"radio\" class=\"{{form.fieldHtmlClass}}\" sf-changed=\"form\" ng-disabled=\"form.readonly\" sf-field-model=\"\" ng-value=\"item.value\" name=\"{{form.key.join(\'.\')}}\"> <span ng-bind-html=\"item.name\"></span></label></div><div class=\"help-block\" sf-message=\"form.description\"></div></div>");
-$templateCache.put("decorators/bootstrap/rds-multi-columns.template.html","<div class=\"row\"><div ng-repeat=\"n in [].constructor(form.columns) track by $index\" ng-class=\"[\'col-xs-\'+mcCtrl.bootstrapCol, \'col-sm-\'+mcCtrl.bootstrapCol, \'col-md-\'+mcCtrl.bootstrapCol, \'col-lg-\'+12/mcCtrl.bootstrapCol]\"><div ng-hide=\"true\">{{columnIndex = $index}}</div><div ng-repeat=\"val in titleMapValues.slice(columnIndex*mcCtrl.itemsPerColumn, $last? titleMapValues.length :(columnIndex + 1)*mcCtrl.itemsPerColumn) track by $index\" class=\"checkbox\"><div ng-hide=\"true\">{{ realIndex = $index + columnIndex*mcCtrl.itemsPerColumn }}</div><label><input type=\"checkbox\" ng-disabled=\"form.readonly\" sf-changed=\"form\" class=\"{{form.fieldHtmlClass}}\" ng-model=\"titleMapValues[realIndex]\" name=\"{{form.key.slice(-1)[0]}}\"> <span ng-bind-html=\"form.titleMap[realIndex].name\"></span></label></div></div></div>");
+$templateCache.put("decorators/bootstrap/rds-column.template.html","<div ng-transclude=\"\"></div><div ng-repeat=\"val in titleMapValues.slice(colCtrl.indexOffset, colCtrl.isLast? titleMapValues.length :(colCtrl.columnIndex + 1) * colCtrl.itemsPerColumn) track by $index\" class=\"checkbox\"><label><input type=\"checkbox\" ng-disabled=\"form.readonly\" sf-changed=\"form\" class=\"{{form.fieldHtmlClass}}\" ng-model=\"titleMapValues[$index + colCtrl.indexOffset]\" name=\"{{form.key.slice(-1)[0]}}\"> <span ng-bind-html=\"form.titleMap[$index + colCtrl.indexOffset].name\"></span></label></div>");
+$templateCache.put("decorators/bootstrap/rds-multi-columns.template.html","<div class=\"row\"><div ng-repeat=\"n in [].constructor(form.columns) track by $index\" ng-class=\"[\'col-xs-\'+multiColCtrl.bootstrapCol, \'col-sm-\'+multiColCtrl.bootstrapCol, \'col-md-\'+multiColCtrl.bootstrapCol, \'col-lg-\'+12/multiColCtrl.bootstrapCol]\"><rds-column><div ng-repeat=\"val in titleMapValues.slice(colCtrl.indexOffset, colCtrl.isLast? titleMapValues.length :(colCtrl.columnIndex + 1) * colCtrl.itemsPerColumn) track by $index\" class=\"checkbox\"><label><input type=\"checkbox\" ng-disabled=\"form.readonly\" sf-changed=\"form\" class=\"{{form.fieldHtmlClass}}\" ng-model=\"titleMapValues[$index + colCtrl.indexOffset]\" name=\"{{form.key.slice(-1)[0]}}\"> <span ng-bind-html=\"form.titleMap[$index + colCtrl.indexOffset].name\"></span></label></div></rds-column></div></div>");
 $templateCache.put("decorators/bootstrap/section.html","<div class=\"schema-form-section {{form.htmlClass}}\"></div>");
 $templateCache.put("decorators/bootstrap/select.html","<div class=\"form-group {{form.htmlClass}} schema-form-select\" ng-class=\"{\'has-error\': form.disableErrorState !== true && hasError(), \'has-success\': form.disableSuccessState !== true && hasSuccess(), \'has-feedback\': form.feedback !== false}\"><label class=\"control-label {{form.labelHtmlClass}}\" ng-show=\"showTitle()\">{{form.title}}</label><select sf-field-model=\"\" ng-disabled=\"form.readonly\" sf-changed=\"form\" class=\"form-control {{form.fieldHtmlClass}}\" schema-validate=\"form\" ng-options=\"item.value as item.name group by item.group for item in form.titleMap\" name=\"{{form.key.slice(-1)[0]}}\"></select><div class=\"help-block\" sf-message=\"form.description\"></div></div>");
 $templateCache.put("decorators/bootstrap/submit.html","<div class=\"form-group schema-form-submit {{form.htmlClass}}\"><input type=\"submit\" class=\"btn {{ form.style || \'btn-primary\' }} {{form.fieldHtmlClass}}\" value=\"{{form.title}}\" ng-disabled=\"form.readonly\" ng-if=\"form.type === \'submit\'\"> <button class=\"btn {{ form.style || \'btn-default\' }}\" type=\"button\" ng-click=\"buttonClick($event,form)\" ng-disabled=\"form.readonly\" ng-if=\"form.type !== \'submit\'\"><span ng-if=\"form.icon\" class=\"{{form.icon}}\"></span> {{form.title}}</button></div>");
@@ -112,32 +113,65 @@ function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
 }]);
 
 (function() {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('schemaForm')
-        .directive('rdsMultiColumns', rdsMultiColumns);
+  angular
+    .module('schemaForm')
+    .directive('rdsColumn', rdsColumn);
 
-    /* @ngInject */
-    function rdsMultiColumns($log) {
-        var directive = {
-            scope: false,
-            controller: RdsMultiColumnsController,
-            controllerAs: 'mcCtrl',
-            restrict: 'A',
-            templateUrl: 'decorators/bootstrap/rds-multi-columns.template.html'
-        };
-        return directive;
-    }
+  /* @ngInject */
+  function rdsColumn() {
+    var directive = {
+      require: 'rdsMultiColumns',
+      controller: ColumnController,
+      controllerAs: 'colCtrl',
+      restrict: 'AE',
+      templateUrl: 'decorators/bootstrap/rds-column.template.html',
+      scope: true,
+      transclude: true
+    };
+    return directive;
+  }
 
-    RdsMultiColumnsController.$inject = ['$scope', '$log'];
 
-    /* @ngInject */
-    function RdsMultiColumnsController($scope, $log) {
-      var vm = this;
+  ColumnController.$inject = ['$scope', '$log'];
 
-      vm.bootstrapCol = 12 / $scope.form.columns;
-      // TODO: Can be further abstracted for use in radio, we may need to use an isolated scope
-      vm.itemsPerColumn = parseInt($scope.titleMapValues.length / $scope.form.columns);
-    }
+  /* @ngInject */
+  function ColumnController($scope, $log) { 
+    var vm = this;
+    vm.columnIndex = $scope.$index;
+    vm.itemsPerColumn = $scope.multiColCtrl.itemsPerColumn;
+    vm.indexOffset = vm.columnIndex * vm.itemsPerColumn;
+    vm.isLast = $scope.$last;
+  }
+})();
+(function() {
+  'use strict';
+
+  angular
+    .module('schemaForm')
+    .directive('rdsMultiColumns', rdsMultiColumns);
+
+  /* @ngInject */
+  function rdsMultiColumns($log) {
+    var directive = {
+      scope: false,
+      controller: RdsMultiColumnsController,
+      controllerAs: 'multiColCtrl',
+      restrict: 'A',
+      templateUrl: 'decorators/bootstrap/rds-multi-columns.template.html'
+    };
+    return directive;
+  }
+
+  RdsMultiColumnsController.$inject = ['$scope', '$log'];
+
+  /* @ngInject */
+  function RdsMultiColumnsController($scope, $log) {
+    var vm = this;
+
+    vm.bootstrapCol = 12 / $scope.form.columns;
+    // TODO: Can be further abstracted for use in radio, we may need to use an isolated scope
+    vm.itemsPerColumn = parseInt($scope.titleMapValues.length / $scope.form.columns);
+  }
 })();
