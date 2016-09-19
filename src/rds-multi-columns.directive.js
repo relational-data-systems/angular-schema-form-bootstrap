@@ -8,11 +8,12 @@
   /* @ngInject */
   function rdsMultiColumns($log) {
     var directive = {
-      scope: false,
       controller: RdsMultiColumnsController,
       controllerAs: 'multiColCtrl',
-      restrict: 'A',
-      templateUrl: 'decorators/bootstrap/rds-multi-columns.template.html'
+      restrict: 'AE',
+      templateUrl: 'decorators/bootstrap/rds-multi-columns.template.html',
+      scope: false,
+      transclude: true
     };
     return directive;
   }

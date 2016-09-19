@@ -19,7 +19,20 @@
     </label>
   </div>
     
-  <div ng-if="form.columns > 1" rds-multi-columns></div>
+  <rds-multi-columns ng-if="form.columns > 1">
+    <div ng-repeat="val in titleMapValues.slice($parent.colCtrl.indexFrom, $parent.colCtrl.indexTo) track by $index"
+       class="checkbox">
+        <label>
+          <input type="checkbox"
+                 ng-disabled="form.readonly"
+                 sf-changed="form"
+                 class="{{form.fieldHtmlClass}}"
+                 ng-model="titleMapValues[$index + $parent.$parent.colCtrl.indexFrom]"
+                 name="{{form.key.slice(-1)[0]}}">
+          <span ng-bind-html="form.titleMap[$index + $parent.$parent.colCtrl.indexFrom].name"></span>
+        </label>
+    </div>
+  </rds-multi-columns>
 
   <div class="help-block" sf-message="form.description"></div>
 </div>

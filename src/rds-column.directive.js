@@ -12,9 +12,7 @@
       controller: ColumnController,
       controllerAs: 'colCtrl',
       restrict: 'AE',
-      templateUrl: 'decorators/bootstrap/rds-column.template.html',
-      scope: true,
-      transclude: true
+      scope: false
     };
     return directive;
   }
@@ -25,9 +23,11 @@
   /* @ngInject */
   function ColumnController($scope, $log) { 
     var vm = this;
-    vm.columnIndex = $scope.$index;
-    vm.itemsPerColumn = $scope.multiColCtrl.itemsPerColumn;
-    vm.indexOffset = vm.columnIndex * vm.itemsPerColumn;
+    vm.colIndex = $scope.$index;
     vm.isLast = $scope.$last;
+    vm.itemsPerColumn = $scope.multiColCtrl.itemsPerColumn;
+
+    vm.indexFrom = vm.colIndex * vm.itemsPerColumn;
+    vm.indexTo = vm.indexFrom + vm.itemsPerColumn;
   }
 })();
