@@ -19,26 +19,7 @@
     </label>
   </div>
     
-  <div ng-if="form.columns > 1" class="row">
-    <div ng-hide="true">{{bootstrapCol = 12/form.columns; itemsPerColumn = titleMapValues.length/form.columns}}</div>
-    <div ng-repeat="n in [].constructor(form.columns) track by $index"
-     ng-class="['col-xs-'+bootstrapCol, 'col-sm-'+bootstrapCol, 'col-md-'+bootstrapCol, 'col-lg-'+12/bootstrapCol]">
-     <div ng-hide="true">{{columnIndex = $index}}</div> <!-- Not sure if there is a better way, but I just don't want another controller here... -->
-      <div ng-repeat="val in titleMapValues.slice(columnIndex*(itemsPerColumn), $last? titleMapValues.length :(columnIndex + 1)*(itemsPerColumn)) track by $index"
-           class="checkbox">
-            <div ng-hide="true">{{ realIndex = $index + columnIndex*(itemsPerColumn) }}</div>
-            <label>
-              <input type="checkbox"
-                     ng-disabled="form.readonly"
-                     sf-changed="form"
-                     class="{{form.fieldHtmlClass}}"
-                     ng-model="titleMapValues[realIndex]"
-                     name="{{form.key.slice(-1)[0]}}">
-              <span ng-bind-html="form.titleMap[realIndex].name"></span>
-            </label>
-      </div>
-    </div>
-  </div>
+  <div ng-if="form.columns > 1" rds-multi-columns></div>
 
   <div class="help-block" sf-message="form.description"></div>
 </div>
