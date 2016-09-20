@@ -18,16 +18,12 @@
     };
 
     function link(scope, element, attrs) {
-      // Need a better way to bind these values to controller
-      // var size = scope.multiColCtrl.size = scope.$eval(attrs['size']);
-      // scope.multiColCtrl.itemsPerColumn = parseInt(size / scope.form.columns);
-      // scope.multiColCtrl.modulus = size % scope.form.columns;
+      // May need to figure out a better way to bind these values to controller while still use non-isolated scope
       attrs.$observe('size', function(size) {
-        scope.multiColCtrl.size = size;
+        scope.multiColCtrl.size = parseInt(size);
         scope.multiColCtrl.itemsPerColumn = parseInt(size / scope.form.columns);
         scope.multiColCtrl.modulus = size % scope.form.columns;
-      })
-
+      });
     }
 
     return directive;
@@ -38,10 +34,6 @@
   /* @ngInject */
   function RdsMultiColumnsController($scope, $log) {
     var vm = this;
-
     vm.bootstrapCol = 12 / $scope.form.columns;
-    // vm.size = $scope.size; (undefined, because link function runs afters controller)
-    // vm.itemsPerColumn = parseInt($scope.size / $scope.form.columns);
-    // vm.modulus = $scope.titleMapValues.length % $scope.form.columns;
   }
 })();

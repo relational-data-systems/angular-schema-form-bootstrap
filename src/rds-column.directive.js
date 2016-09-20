@@ -25,7 +25,7 @@
     $scope.$watch(function() {
       return $scope.multiColCtrl.size;
     }, function(size) {
-      var multiColCtrl = $scope.multiColCtrl; // better injected by link function?
+      var multiColCtrl = $scope.multiColCtrl;
       vm.colIndex = $scope.$index;
       vm.isLast = $scope.$last;
       vm.isFirst = $scope.$first;
