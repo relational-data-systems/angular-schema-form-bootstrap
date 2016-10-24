@@ -75,6 +75,7 @@ function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
     tabarray: {template: base + 'tabarray.html', builder: [sfField, ngModelOptions, ngModel, array, condition, tabArray]},
     tabs: {template: base + 'tabs.html', builder: [sfField, ngModelOptions, tabs, condition]},
     section: {template: base + 'section.html', builder: [sfField, simpleTransclusion, condition]},
+    'btn-group': {template: base + 'btn-group.html', builder: [sfField, simpleTransclusion, condition]},
     conditional: {template: base + 'section.html', builder: [sfField, simpleTransclusion, condition]},
     actions: {template: base + 'actions.html', builder: defaults},
     select: {template: base + 'select.html', builder: [selectPlaceholder, sfField, ngModel, ngModelOptions, condition]},
