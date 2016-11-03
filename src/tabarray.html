@@ -35,14 +35,38 @@
 
            <div schema-form-array-items></div>
 
-           <button ng-hide="form.readonly"
-                   ng-click="selected.tab = deleteFromArray($index).length - 1"
-                   ng-disabled="form.schema.minItems >= modelArray.length"
-                   type="button"
-                   class="btn {{ form.style.remove || 'btn-default' }} pull-right">
-             <i class="glyphicon glyphicon-trash"></i>
-             {{ form.remove || 'Remove'}}
-           </button>
+           <div class="row">
+             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-left">
+               <button ng-hide="form.readonly"
+                       ng-click="selected.tab = indexDown($index)"
+                       ng-disabled="$index <= 0"
+                       type="button"
+                       class="btn {{ form.style.moveUp || 'btn-info' }}">
+                 <i class="glyphicon glyphicon-arrow-up"></i>
+                 {{ form.moveUp || 'Move Up'}}
+               </button>
+
+                <button ng-hide="form.readonly"
+                       ng-click="selected.tab = indexUp($index)"
+                       ng-disabled="$index >= modelArray.length - 1"
+                       type="button"
+                       class="btn {{ form.style.moveDown || 'btn-info' }}">
+                 <i class="glyphicon glyphicon-arrow-down"></i>
+                 {{ form.moveDown|| 'Move Down'}}
+               </button>
+             </div>
+
+             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right">
+               <button ng-hide="form.readonly"
+                       ng-click="selected.tab = deleteFromArray($index).length - 1"
+                       ng-disabled="form.schema.minItems >= modelArray.length"
+                       type="button"
+                       class="btn {{ form.style.remove || 'btn-default' }}">
+                 <i class="glyphicon glyphicon-trash"></i>
+                 {{ form.remove || 'Remove'}}
+               </button> 
+             </div>
+           </div>
       </div>
       <div class="help-block"
            ng-show="(hasError() && errorMessage(schemaError())) || form.description"
