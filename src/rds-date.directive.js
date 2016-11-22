@@ -23,13 +23,13 @@
     function DateController($scope, $log, sfSelect, $element) {
         var vm = this;
 
-        vm.ngModelController = $element.controller('ngModel');
-        vm.date = null;
-
         $scope.initInternalModel = initInternalModel;
 
         var form = $scope.form;
         var model = $scope.model;
+
+        vm.ngModelController = $element.controller('ngModel');
+        vm.date = form.defaultDate == "today" ? new Date() : null;
 
         function initInternalModel(model) {
             if(model) {
