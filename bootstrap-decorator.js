@@ -5,7 +5,7 @@ $templateCache.put("decorators/bootstrap/btn-group.html","<div class=\"schema-fo
 $templateCache.put("decorators/bootstrap/checkbox.html","<div class=\"checkbox schema-form-checkbox {{form.htmlClass}}\" ng-class=\"{\'has-error\': form.disableErrorState !== true && hasError(), \'has-success\': form.disableSuccessState !== true && hasSuccess()}\"><label class=\"{{form.labelHtmlClass}}\"><input type=\"checkbox\" sf-changed=\"form\" ng-disabled=\"form.readonly\" sf-field-model=\"\" schema-validate=\"form\" class=\"{{form.fieldHtmlClass}}\" name=\"{{form.key.slice(-1)[0]}}\"> <span ng-bind-html=\"form.title\"></span></label><div class=\"help-block\" sf-message=\"form.description\"></div></div>");
 $templateCache.put("decorators/bootstrap/checkboxes.html","<div sf-field-model=\"sf-new-array\" sf-new-array=\"\" class=\"form-group schema-form-checkboxes {{form.htmlClass}}\" ng-class=\"{\'has-error\': form.disableErrorState !== true && hasError(), \'has-success\': form.disableSuccessState !== true && hasSuccess()}\"><label class=\"control-label {{form.labelHtmlClass}}\" sf-field-model=\"\" schema-validate=\"form\" ng-show=\"showTitle()\">{{form.title}}</label><div class=\"checkbox\" ng-if=\"!form.columns || form.columns === 1\" ng-repeat=\"entry in form.titleMap track by $index\"><label><input type=\"checkbox\" ng-disabled=\"form.readonly\" sf-changed=\"form\" class=\"{{form.fieldHtmlClass}}\" ng-model=\"titleMapValues[$index]\" name=\"{{form.key.slice(-1)[0]}}\"> <span ng-bind-html=\"form.titleMap[$index].name\"></span></label></div><rds-multi-columns size=\"{{form.titleMap.length}}\" ng-if=\"form.columns > 1\"><div ng-repeat=\"val in titleMapValues.slice($parent.colCtrl.indexFrom, $parent.colCtrl.indexTo) track by $index\" class=\"checkbox\"><label><input type=\"checkbox\" ng-disabled=\"form.readonly\" sf-changed=\"form\" class=\"{{form.fieldHtmlClass}}\" ng-model=\"titleMapValues[$index + $parent.$parent.colCtrl.indexFrom]\" name=\"{{form.key.slice(-1)[0]}}\"> <span ng-bind-html=\"form.titleMap[$index + $parent.$parent.colCtrl.indexFrom].name\"></span></label></div></rds-multi-columns><div class=\"help-block\" sf-message=\"form.description\"></div></div>");
 $templateCache.put("decorators/bootstrap/date.html","<div class=\"form-group schema-form-{{form.type}} {{form.htmlClass}}\" ng-class=\"{\'has-error\': form.disableErrorState !== true && hasError(), \'has-success\': form.disableSuccessState !== true && hasSuccess(), \'has-feedback\': form.feedback !== false }\"><label class=\"control-label {{form.labelHtmlClass}}\" ng-class=\"{\'sr-only\': !showTitle()}\" for=\"{{form.key.slice(-1)[0]}}\">{{form.title}}</label><div id=\"{{form.key.slice(-1)[0]}}\" ng-show=\"form.key\" rds-date=\"\" sf-field-model=\"replaceAll\" ng-init=\"initInternalModel($$value$$);\" ng-model=\"$$value$$\"><input type=\"date\" ng-model=\"dateCtrl.date\" class=\"form-control {{form.fieldHtmlClass}}\" ng-disabled=\"form.readonly\" sf-changed=\"form\" schema-validate=\"form\"></div><span ng-if=\"form.feedback !== false\" class=\"form-control-feedback\" ng-class=\"evalInScope(form.feedback) || {\'glyphicon\': true, \'glyphicon-ok\': hasSuccess(), \'glyphicon-remove\': hasError() }\" aria-hidden=\"true\"></span> <span ng-if=\"hasError() || hasSuccess()\" id=\"{{form.key.slice(-1)[0] + \'Status\'}}\" class=\"sr-only\">{{ hasSuccess() ? \'(success)\' : \'(error)\' }}</span><div class=\"help-block\" sf-message=\"form.description\"></div></div>");
-$templateCache.put("decorators/bootstrap/default.html","<div class=\"form-group schema-form-{{form.type}} {{form.htmlClass}}\" ng-class=\"{\'has-error\': form.disableErrorState !== true && hasError(), \'has-success\': form.disableSuccessState !== true && hasSuccess(), \'has-feedback\': form.feedback !== false }\"><label class=\"control-label {{form.labelHtmlClass}}\" ng-class=\"{\'sr-only\': !showTitle()}\" for=\"{{form.key.slice(-1)[0]}}\">{{form.title}}</label> <input ng-if=\"!form.fieldAddonLeft && !form.fieldAddonRight\" ng-show=\"form.key\" type=\"{{form.type}}\" step=\"any\" sf-changed=\"form\" placeholder=\"{{form.placeholder}}\" class=\"form-control {{form.fieldHtmlClass}}\" id=\"{{form.key.slice(-1)[0]}}\" sf-field-model=\"\" ng-disabled=\"form.readonly\" remote-validation=\"\" schema-validate=\"form\" name=\"{{form.key.slice(-1)[0]}}\" aria-describedby=\"{{form.key.slice(-1)[0] + \'Status\'}}\"><div ng-if=\"form.fieldAddonLeft || form.fieldAddonRight\" ng-class=\"{\'input-group\': (form.fieldAddonLeft || form.fieldAddonRight)}\"><span ng-if=\"form.fieldAddonLeft\" class=\"input-group-addon\" ng-bind-html=\"form.fieldAddonLeft\"></span> <input ng-show=\"form.key\" type=\"{{form.type}}\" step=\"any\" sf-changed=\"form\" placeholder=\"{{form.placeholder}}\" class=\"form-control {{form.fieldHtmlClass}}\" id=\"{{form.key.slice(-1)[0]}}\" sf-field-model=\"\" ng-disabled=\"form.readonly\" remote-validation=\"\" schema-validate=\"form\" name=\"{{form.key.slice(-1)[0]}}\" aria-describedby=\"{{form.key.slice(-1)[0] + \'Status\'}}\"> <span ng-if=\"form.fieldAddonRight\" class=\"input-group-addon\" ng-bind-html=\"form.fieldAddonRight\"></span></div><span ng-if=\"form.feedback !== false\" class=\"form-control-feedback\" ng-class=\"evalInScope(form.feedback) || {\'glyphicon\': true, \'glyphicon-ok\': hasSuccess(), \'glyphicon-remove\': hasError() }\" aria-hidden=\"true\"></span> <span ng-if=\"hasError() || hasSuccess()\" id=\"{{form.key.slice(-1)[0] + \'Status\'}}\" class=\"sr-only\">{{ hasSuccess() ? \'(success)\' : \'(error)\' }}</span><div class=\"help-block\" sf-message=\"form.description\"></div></div>");
+$templateCache.put("decorators/bootstrap/default.html","<div class=\"form-group schema-form-{{form.type}} {{form.htmlClass}}\" ng-class=\"{\'has-error\': form.disableErrorState !== true && hasError(), \'has-success\': form.disableSuccessState !== true && hasSuccess(), \'has-feedback\': form.feedback !== false }\"><label class=\"control-label {{form.labelHtmlClass}}\" ng-class=\"{\'sr-only\': !showTitle()}\" for=\"{{form.key.slice(-1)[0]}}\">{{form.title}}</label> <input ng-if=\"!form.fieldAddonLeft && !form.fieldAddonRight\" ng-show=\"form.key\" type=\"{{form.type}}\" step=\"any\" sf-changed=\"form\" placeholder=\"{{form.placeholder}}\" class=\"form-control {{form.fieldHtmlClass}}\" id=\"{{form.key.slice(-1)[0]}}\" sf-field-model=\"\" ng-disabled=\"form.readonly\" schema-validate=\"form\" remote-validation=\"\" name=\"{{form.key.slice(-1)[0]}}\" aria-describedby=\"{{form.key.slice(-1)[0] + \'Status\'}}\"><div ng-if=\"form.fieldAddonLeft || form.fieldAddonRight\" ng-class=\"{\'input-group\': (form.fieldAddonLeft || form.fieldAddonRight)}\"><span ng-if=\"form.fieldAddonLeft\" class=\"input-group-addon\" ng-bind-html=\"form.fieldAddonLeft\"></span> <input ng-show=\"form.key\" type=\"{{form.type}}\" step=\"any\" sf-changed=\"form\" placeholder=\"{{form.placeholder}}\" class=\"form-control {{form.fieldHtmlClass}}\" id=\"{{form.key.slice(-1)[0]}}\" sf-field-model=\"\" ng-disabled=\"form.readonly\" schema-validate=\"form\" remote-validation=\"\" name=\"{{form.key.slice(-1)[0]}}\" aria-describedby=\"{{form.key.slice(-1)[0] + \'Status\'}}\"> <span ng-if=\"form.fieldAddonRight\" class=\"input-group-addon\" ng-bind-html=\"form.fieldAddonRight\"></span></div><span ng-if=\"form.feedback !== false\" class=\"form-control-feedback\" ng-class=\"evalInScope(form.feedback) || {\'glyphicon\': true, \'glyphicon-ok\': hasSuccess(), \'glyphicon-remove\': hasError() }\" aria-hidden=\"true\"></span> <span ng-if=\"hasError() || hasSuccess()\" id=\"{{form.key.slice(-1)[0] + \'Status\'}}\" class=\"sr-only\">{{ hasSuccess() ? \'(success)\' : \'(error)\' }}</span><div class=\"help-block\" sf-message=\"form.description\"></div></div>");
 $templateCache.put("decorators/bootstrap/fieldset.html","<fieldset ng-disabled=\"form.readonly\" class=\"schema-form-fieldset {{form.htmlClass}}\"><legend ng-class=\"{\'sr-only\': !showTitle() }\">{{ form.title }}</legend><div class=\"help-block\" ng-show=\"form.description\" ng-bind-html=\"form.description\"></div></fieldset>");
 $templateCache.put("decorators/bootstrap/help.html","<div class=\"helpvalue schema-form-helpvalue {{form.htmlClass}}\" ng-bind-html=\"form.helpvalue\"></div>");
 $templateCache.put("decorators/bootstrap/key-container.html","<div class=\"schema-form-section {{form.htmlClass}}\" sf-field-model=\"\"></div>");
@@ -305,88 +305,83 @@ function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
 (function() {
   'use strict';
 
-  angular
-    .module('schemaForm')
-    .directive('remoteValidation', remoteValidation);
+  angular.module('schemaForm').directive('remoteValidation', remoteValidation);
 
   remoteValidation.$inject = ['$log', '$interpolate', '$http', '$compile'];
 
   function remoteValidation($log, $interpolate, $http, $compile) {
     var directive = {
-      link: link,
       restrict: 'A',
-      scope: false
+      scope: false,
+      priority: 500,
+      //require: '?ngModel',
+      link: link
     };
     return directive;
 
     function link(scope, element, attrs) {
-      // if value is not provided do nothing
-      if (!scope.form.remoteValidation)
+
+      if (!scope.form.remoteValidation){
         return;
+      }
 
       var form = scope.form;
       var model = scope.model;
 
-      var _interpolatedUrl;
-
       var regex_interpolate = /({)([^}]*)(})/gm;
       var _validationTemplateUrl = form.remoteValidation.replace(regex_interpolate, '$1$1 model.$2 $3$3');
-      $log.debug("remoteValidation#URL after processing:" + _validationTemplateUrl);
 
       _watchInput();
 
       function _watchInput() {
-        // var valURL = form.remoteValidation;
-        $log.debug("remoteValidation#link - _validationTemplateUrl: " + _validationTemplateUrl);
-        if (!_validationTemplateUrl) {
-          $log.debug("remoteValidation#link - _validationTemplateUrl is not set, not watching anything");
-          return;
-        }
-        $log.debug("we are watching ----> model." + form.key[0]);
+
+        var _subme = "{{" + "model." + form.key[0] + "}}";
+
         scope.$watch("model." + form.key[0], function(newValue, oldValue) {
           var exp;
+          // FIXME: newValue is always undefined after the first time the listener triggers.
           if (newValue) {
-            $log.debug("remoteValidation#link#url:" + _validationTemplateUrl);
+
+            // FIXME; does not work scope is broken in listener
             exp = $interpolate(_validationTemplateUrl, false, null, true);
-            _interpolatedUrl = exp(scope);
-            $log.debug("remoteValidation#link#url: " + _interpolatedUrl);
-            validate();
+            var interpolatedUrl = exp(scope);
+            console.log('interpolatedUrl = ' + interpolatedUrl);
+            // manually replace text that would be interpolated with the new value
+            validate(interpolatedUrl);
           }
         });
       }
 
-      function validate() {
+      function validate(interpolatedUrl) {
 
         $http({
           method: 'GET',
-          url: _interpolatedUrl
+          url: interpolatedUrl
         }).then(function(response) {
           // get data and add it to the model
           var data = response.data;
-          // angular.extend(model, data);
-
-          $log.debug("remoteValidation#link#response.data - :" + data);
+          console.log("remoteValidation#link#response.data - :" + data);
 
           // expects a boolean only.
           var result = data.validation;
-          $log.debug("remoteValidation#link#response.data.validation - :" + result);
+          console.log("remoteValidation#link#response.data.validation - :" + result);
 
           // do our stuff.... (check how this is done with standard validation for consistency purposes.)
           displayErrors(result);
 
-        }).catch(function(response) {
+        }).catch(function(response) {angular-schema-form-bootstrap
           // TODO: Not sure if we have a generic exception handler for directive exceptions. Do nothing for now.
         });
       }
 
-      // broadcast errors
+      // broadcast validation errors
       function displayErrors(result){
-        $log.debug("remoteValidation#displayErrors#result - :" + result);
+
         // setup validation messages as an array
         if (scope.form.complexValidationMessage) {
             if (!scope.form.validationMessage) {
                 scope.form.validationMessage = {};
-            } else if (typeof $scope.form.validationMessage === "string") {
+            } else if (typeof scope.form.validationMessage === "string") {
                 // take validationMessage and shoehorn it into a new array of messages
                 var defaultValidationMessage = scope.form.validationMessage;
                 scope.form.validationMessage = {};
@@ -396,13 +391,11 @@ function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
         }
 
         if (result) {
-            console.log('schemaForm.error.' + scope.form.key.join('.') + "  remoteValidation  valid");
-            //$scope.form.complexValidationResult = true;
+            //scope.form.complexValidationResult = true;
             if (scope.ngModel.$$parentForm.$dirty)
                 scope.$broadcast('schemaForm.error.' + scope.form.key.join('.'), 'remoteValidation', true);
         } else {
-            console.log('schemaForm.error.' + scope.form.key.join('.') + "  remoteValidation  invalid");
-            //$scope.form.complexValidationResult = false;
+            //scope.form.complexValidationResult = false;
 
             //FIXME: copied from complex-validation.js doesn not check til root of document (not sure why this is required)
             var isFormDirty = scope.ngModel.$$parentForm.$dirty
@@ -410,11 +403,11 @@ function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
                 isFormDirty = scope.ngModel.$$parentForm.$$parentForm.$dirty;
             }
             if (isFormDirty){
-                console.log('FILTHY');
                 scope.$broadcast('schemaForm.error.' + scope.form.key.join('.'), 'remoteValidation');
             }
         }
       }
     }
   }
+
 })();
