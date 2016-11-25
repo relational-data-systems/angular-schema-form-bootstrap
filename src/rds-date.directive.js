@@ -17,19 +17,21 @@
         return directive;
     }
 
-    DateController.$inject = ['$scope', '$log', 'sfSelect', '$element'];
+    DateController.$inject = ['$scope', '$log', 'sfSelect', '$element', '$timeout'];
 
     /* @ngInject */
-    function DateController($scope, $log, sfSelect, $element) {
+    function DateController($scope, $log, sfSelect, $element, $timeout) {
         var vm = this;
 
         $scope.initInternalModel = initInternalModel;
+        $scope.changeDate = changeDate;
 
         var form = $scope.form;
         var model = $scope.model;
 
         vm.ngModelController = $element.controller('ngModel');
-        vm.date = form.defaultDate == "today" ? new Date() : null;
+        // vm.date = form.defaultDate == "today" ? new Date() : null;
+        vm.date = undefined;
 
         function initInternalModel(model) {
             if(model) {
@@ -37,18 +39,11 @@
             }
         }
 
-        // Watch the internal value, and update the model value
-        $scope.$watch(
-            function() {
-                return vm.date;
-            },
-            function(newValue, oldValue) {
-                if ( newValue !== oldValue ) {
-                    vm.ngModelController.$setViewValue(new Date(newValue));
-                    vm.ngModelController.$commitViewValue();
-                }
-            }
-        );
+        function changeDate(modelName, newDate) {
+            $log.debug("DATE CHANGE", newDate);
+            vm.ngModelController.$setViewValue(moment(newDate));
+            vm.ngModelController.$commitViewValue();
+        }
 
         // Watch the model value, and update the internal value
         $scope.$watch(
@@ -56,8 +51,12 @@
                 return vm.ngModelController.$modelValue;
             },
             function(newValue, oldValue) {
-                if ( new Date(newValue).toDateString() !== new Date(oldValue).toDateString() ) {
-                    vm.date = new Date(newValue);
+                if ( moment(newValue) !== moment(oldValue) ) {
+                    if (newValue !== undefined) {
+                        vm.date = moment(newValue);
+                    } else {
+                        vm.date = newValue;
+                    }
                 }
             }
         );

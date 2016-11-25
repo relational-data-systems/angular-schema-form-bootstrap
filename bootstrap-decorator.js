@@ -4,7 +4,7 @@ $templateCache.put("decorators/bootstrap/array.html","<div class=\"schema-form-a
 $templateCache.put("decorators/bootstrap/btn-group.html","<div class=\"schema-form-section {{form.htmlClass}} text-center\"></div>");
 $templateCache.put("decorators/bootstrap/checkbox.html","<div class=\"checkbox schema-form-checkbox {{form.htmlClass}}\" ng-class=\"{\'has-error\': form.disableErrorState !== true && hasError(), \'has-success\': form.disableSuccessState !== true && hasSuccess()}\"><label class=\"{{form.labelHtmlClass}}\"><input type=\"checkbox\" sf-changed=\"form\" ng-disabled=\"form.readonly\" sf-field-model=\"\" schema-validate=\"form\" class=\"{{form.fieldHtmlClass}}\" name=\"{{form.key.slice(-1)[0]}}\"> <span ng-bind-html=\"form.title\"></span></label><div class=\"help-block\" sf-message=\"form.description\"></div></div>");
 $templateCache.put("decorators/bootstrap/checkboxes.html","<div sf-field-model=\"sf-new-array\" sf-new-array=\"\" class=\"form-group schema-form-checkboxes {{form.htmlClass}}\" ng-class=\"{\'has-error\': form.disableErrorState !== true && hasError(), \'has-success\': form.disableSuccessState !== true && hasSuccess()}\"><label class=\"control-label {{form.labelHtmlClass}}\" sf-field-model=\"\" schema-validate=\"form\" ng-show=\"showTitle()\">{{form.title}} <a ng-if=\"form.tooltip\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"{{form.tooltip}}\"><i class=\"glyphicon glyphicon-info-sign\"></i></a></label><div class=\"checkbox\" ng-if=\"!form.columns || form.columns === 1\" ng-repeat=\"entry in form.titleMap track by $index\"><label><input type=\"checkbox\" ng-disabled=\"form.readonly\" sf-changed=\"form\" class=\"{{form.fieldHtmlClass}}\" ng-model=\"titleMapValues[$index]\" name=\"{{form.key.slice(-1)[0]}}\"> <span ng-bind-html=\"form.titleMap[$index].name\"></span></label></div><rds-multi-columns size=\"{{form.titleMap.length}}\" ng-if=\"form.columns > 1\"><div ng-repeat=\"val in titleMapValues.slice($parent.colCtrl.indexFrom, $parent.colCtrl.indexTo) track by $index\" class=\"checkbox\"><label><input type=\"checkbox\" ng-disabled=\"form.readonly\" sf-changed=\"form\" class=\"{{form.fieldHtmlClass}}\" ng-model=\"titleMapValues[$index + $parent.$parent.colCtrl.indexFrom]\" name=\"{{form.key.slice(-1)[0]}}\"> <span ng-bind-html=\"form.titleMap[$index + $parent.$parent.colCtrl.indexFrom].name\"></span></label></div></rds-multi-columns><div class=\"help-block\" sf-message=\"form.description\"></div></div>");
-$templateCache.put("decorators/bootstrap/date.html","<div class=\"form-group schema-form-{{form.type}} {{form.htmlClass}}\" ng-class=\"{\'has-error\': form.disableErrorState !== true && hasError(), \'has-success\': form.disableSuccessState !== true && hasSuccess(), \'has-feedback\': form.feedback !== false }\"><label class=\"control-label {{form.labelHtmlClass}}\" ng-class=\"{\'sr-only\': !showTitle()}\" for=\"{{form.key.slice(-1)[0]}}\">{{form.title}}</label><div id=\"{{form.key.slice(-1)[0]}}\" ng-show=\"form.key\" rds-date=\"\" sf-field-model=\"replaceAll\" ng-init=\"initInternalModel($$value$$);\" ng-model=\"$$value$$\"><input type=\"date\" ng-model=\"dateCtrl.date\" class=\"form-control {{form.fieldHtmlClass}}\" ng-disabled=\"form.readonly\" sf-changed=\"form\" schema-validate=\"form\"></div><span ng-if=\"form.feedback !== false\" class=\"form-control-feedback\" ng-class=\"evalInScope(form.feedback) || {\'glyphicon\': true, \'glyphicon-ok\': hasSuccess(), \'glyphicon-remove\': hasError() }\" aria-hidden=\"true\"></span> <span ng-if=\"hasError() || hasSuccess()\" id=\"{{form.key.slice(-1)[0] + \'Status\'}}\" class=\"sr-only\">{{ hasSuccess() ? \'(success)\' : \'(error)\' }}</span><div class=\"help-block\" sf-message=\"form.description\"></div></div>");
+$templateCache.put("decorators/bootstrap/date.html","<div class=\"form-group schema-form-{{form.type}} {{form.htmlClass}}\" ng-class=\"{\'has-error\': form.disableErrorState !== true && hasError(), \'has-success\': form.disableSuccessState !== true && hasSuccess(), \'has-feedback\': form.feedback !== false }\"><label class=\"control-label {{form.labelHtmlClass}}\" ng-class=\"{\'sr-only\': !showTitle()}\" for=\"{{form.key.slice(-1)[0]}}\">{{form.title}}</label><div id=\"{{form.key.slice(-1)[0]}}\" ng-show=\"form.key\" rds-date=\"\" sf-field-model=\"replaceAll\" ng-init=\"initInternalModel($$value$$);\" ng-model=\"$$value$$\"><input type=\"text\" class=\"form-control {{form.fieldHtmlClass}}\" ng-disabled=\"form.readonly\" sf-changed=\"form\" schema-validate=\"form\" date-time=\"\" format=\"DD-MM-YYYY\" ng-model=\"dateCtrl.date\" view=\"date\" max-view=\"year\" min-view=\"date\" date-change=\"changeDate\"></div><span ng-if=\"form.feedback !== false\" class=\"form-control-feedback\" ng-class=\"evalInScope(form.feedback) || {\'glyphicon\': true, \'glyphicon-ok\': hasSuccess(), \'glyphicon-remove\': hasError() }\" aria-hidden=\"true\"></span> <span ng-if=\"hasError() || hasSuccess()\" id=\"{{form.key.slice(-1)[0] + \'Status\'}}\" class=\"sr-only\">{{ hasSuccess() ? \'(success)\' : \'(error)\' }}</span><div class=\"help-block\" sf-message=\"form.description\"></div></div>");
 $templateCache.put("decorators/bootstrap/default.html","<div class=\"form-group schema-form-{{form.type}} {{form.htmlClass}}\" ng-class=\"{\'has-error\': form.disableErrorState !== true && hasError(), \'has-success\': form.disableSuccessState !== true && hasSuccess(), \'has-feedback\': form.feedback !== false }\"><label class=\"control-label {{form.labelHtmlClass}}\" ng-class=\"{\'sr-only\': !showTitle()}\" for=\"{{form.key.slice(-1)[0]}}\">{{form.title}} <a ng-if=\"form.tooltip\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"{{form.tooltip}}\"><i class=\"glyphicon glyphicon-info-sign\"></i></a></label> <input ng-if=\"!form.fieldAddonLeft && !form.fieldAddonRight\" ng-show=\"form.key\" type=\"{{form.type}}\" step=\"any\" sf-changed=\"form\" placeholder=\"{{form.placeholder}}\" class=\"form-control {{form.fieldHtmlClass}}\" id=\"{{form.key.slice(-1)[0]}}\" sf-field-model=\"\" ng-disabled=\"form.readonly\" schema-validate=\"form\" name=\"{{form.key.slice(-1)[0]}}\" aria-describedby=\"{{form.key.slice(-1)[0] + \'Status\'}}\"><div ng-if=\"form.fieldAddonLeft || form.fieldAddonRight\" ng-class=\"{\'input-group\': (form.fieldAddonLeft || form.fieldAddonRight)}\"><span ng-if=\"form.fieldAddonLeft\" class=\"input-group-addon\" ng-bind-html=\"form.fieldAddonLeft\"></span> <input ng-show=\"form.key\" type=\"{{form.type}}\" step=\"any\" sf-changed=\"form\" placeholder=\"{{form.placeholder}}\" class=\"form-control {{form.fieldHtmlClass}}\" id=\"{{form.key.slice(-1)[0]}}\" sf-field-model=\"\" ng-disabled=\"form.readonly\" schema-validate=\"form\" name=\"{{form.key.slice(-1)[0]}}\" aria-describedby=\"{{form.key.slice(-1)[0] + \'Status\'}}\"> <span ng-if=\"form.fieldAddonRight\" class=\"input-group-addon\" ng-bind-html=\"form.fieldAddonRight\"></span></div><span ng-if=\"form.feedback !== false\" class=\"form-control-feedback\" ng-class=\"evalInScope(form.feedback) || {\'glyphicon\': true, \'glyphicon-ok\': hasSuccess(), \'glyphicon-remove\': hasError() }\" aria-hidden=\"true\"></span> <span ng-if=\"hasError() || hasSuccess()\" id=\"{{form.key.slice(-1)[0] + \'Status\'}}\" class=\"sr-only\">{{ hasSuccess() ? \'(success)\' : \'(error)\' }}</span><div class=\"help-block\" sf-message=\"form.description\"></div></div>");
 $templateCache.put("decorators/bootstrap/fieldset.html","<fieldset ng-disabled=\"form.readonly\" class=\"schema-form-fieldset {{form.htmlClass}}\"><legend ng-class=\"{\'sr-only\': !showTitle() }\">{{ form.title }}</legend><div class=\"help-block\" ng-show=\"form.description\" ng-bind-html=\"form.description\"></div></fieldset>");
 $templateCache.put("decorators/bootstrap/help.html","<div class=\"helpvalue schema-form-helpvalue {{form.htmlClass}}\" ng-bind-html=\"form.helpvalue\"></div>");
@@ -216,19 +216,21 @@ function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
         return directive;
     }
 
-    DateController.$inject = ['$scope', '$log', 'sfSelect', '$element'];
+    DateController.$inject = ['$scope', '$log', 'sfSelect', '$element', '$timeout'];
 
     /* @ngInject */
-    function DateController($scope, $log, sfSelect, $element) {
+    function DateController($scope, $log, sfSelect, $element, $timeout) {
         var vm = this;
 
         $scope.initInternalModel = initInternalModel;
+        $scope.changeDate = changeDate;
 
         var form = $scope.form;
         var model = $scope.model;
 
         vm.ngModelController = $element.controller('ngModel');
-        vm.date = form.defaultDate == "today" ? new Date() : null;
+        // vm.date = form.defaultDate == "today" ? new Date() : null;
+        vm.date = undefined;
 
         function initInternalModel(model) {
             if(model) {
@@ -236,18 +238,11 @@ function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
             }
         }
 
-        // Watch the internal value, and update the model value
-        $scope.$watch(
-            function() {
-                return vm.date;
-            },
-            function(newValue, oldValue) {
-                if ( newValue !== oldValue ) {
-                    vm.ngModelController.$setViewValue(new Date(newValue));
-                    vm.ngModelController.$commitViewValue();
-                }
-            }
-        );
+        function changeDate(modelName, newDate) {
+            $log.debug("DATE CHANGE", newDate);
+            vm.ngModelController.$setViewValue(moment(newDate));
+            vm.ngModelController.$commitViewValue();
+        }
 
         // Watch the model value, and update the internal value
         $scope.$watch(
@@ -255,8 +250,12 @@ function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
                 return vm.ngModelController.$modelValue;
             },
             function(newValue, oldValue) {
-                if ( new Date(newValue).toDateString() !== new Date(oldValue).toDateString() ) {
-                    vm.date = new Date(newValue);
+                if ( moment(newValue) !== moment(oldValue) ) {
+                    if (newValue !== undefined) {
+                        vm.date = moment(newValue);
+                    } else {
+                        vm.date = newValue;
+                    }
                 }
             }
         );
