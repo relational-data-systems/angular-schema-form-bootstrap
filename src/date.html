@@ -9,7 +9,8 @@
        ng-init="initInternalModel($$value$$);"
        ng-model="$$value$$">
  <input type="text" class="form-control {{form.fieldHtmlClass}}" ng-disabled="form.readonly" sf-changed="form" schema-validate="form"
-        date-time format="DD-MM-YYYY" ng-model="dateCtrl.date" view="date" max-view="year" min-view="date" date-change="changeDate" />
+        date-time ng-model="dateCtrl.date" view="date" max-view="year" min-view="date" date-change="pickerChangeDate" ng-blur="onBlurCommit(dateCtrl.date);"
+        format="{{dateCtrl.dateFormat}}" min-date="minDate" max-date="maxDate" />
 </div>
 
 <span ng-if="form.feedback !== false"

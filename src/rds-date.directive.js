@@ -24,22 +24,29 @@
         var vm = this;
 
         $scope.initInternalModel = initInternalModel;
-        $scope.changeDate = changeDate;
+        $scope.pickerChangeDate = pickerChangeDate;
+        $scope.onBlurCommit = onBlurCommit;
 
         var form = $scope.form;
         var model = $scope.model;
 
         vm.ngModelController = $element.controller('ngModel');
-        // vm.date = form.defaultDate == "today" ? new Date() : null;
-        vm.date = undefined;
+        vm.date = form.defaultDate == "today" ? new Date() : undefined;
+        vm.dateFormat = form.dateFormat ? form.dateFormat : "DD-MM-YYYY";
+        $scope.minDate = form.minDate ? form.minDate : undefined;
+        $scope.maxDate = form.maxDate ? form.maxDate : undefined;
 
         function initInternalModel(model) {
             if(model) {
                 vm.date = new Date(model);
             }
+            if (form.defaultDate == "today") {
+                vm.ngModelController.$setViewValue(moment(vm.date));
+                vm.ngModelController.$commitViewValue();
+            }
         }
 
-        function changeDate(modelName, newDate) {
+        function pickerChangeDate(modelName, newDate) {
             $log.debug("DATE CHANGE", newDate);
             vm.ngModelController.$setViewValue(moment(newDate));
             vm.ngModelController.$commitViewValue();
@@ -60,6 +67,15 @@
                 }
             }
         );
+
+        function onBlurCommit(newValue) {
+            var newDate = moment(newValue);
+            if (!moment(newDate).isValid()) {
+                newDate = undefined;
+            }
+            vm.ngModelController.$setViewValue(newDate);
+            vm.ngModelController.$commitViewValue();
+        }
 
     }
 })();

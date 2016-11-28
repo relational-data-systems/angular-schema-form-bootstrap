@@ -22,11 +22,10 @@
   ],
   "dependencies": {
     "angular-schema-form": "https://github.com/relational-data-systems/angular-schema-form.git#development",
-    "angular-datepicker": "^2.0.3"
+    "angular-datepicker": "https://github.com/relational-data-systems/angular-datepicker.git#develop"
   },
   "devDependencies": {
     "angular-ui-ace": "bower",
-    "angular-schema-form-datepicker": ">= 0.1.0",
     "angular-schema-form-colorpicker": ">= 0.1.0",
     "jquery": "~2.1.1",
     "angular-mocks": ">= 1.2",
