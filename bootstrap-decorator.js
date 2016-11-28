@@ -219,7 +219,7 @@ function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
     DateController.$inject = ['$scope', '$log', 'sfSelect', '$element', '$timeout'];
 
     /* @ngInject */
-    function DateController($scope, $log, sfSelect, $element, $timeout) {
+    function DateController($scope, $log, sfSelect, $element) {
         var vm = this;
 
         $scope.initInternalModel = initInternalModel;
