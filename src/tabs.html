@@ -1,9 +1,9 @@
-<div ng-init="selected = { tab: 0 }" class="schema-form-tabs {{form.htmlClass}}">
+<div class="schema-form-tabs {{form.htmlClass}}">
   <ul class="nav nav-tabs">
     <li ng-repeat="tab in form.tabs"
         ng-disabled="form.readonly"
-        ng-click="$event.preventDefault() || (selected.tab = $index)"
-        ng-class="{active: selected.tab === $index}">
+        ng-click="$event.preventDefault() || (form.selectedTab = $index)"
+        ng-class="{active: form.selectedTab === $index}">
         <a href="#">{{ tab.title }}</a>
     </li>
   </ul>
