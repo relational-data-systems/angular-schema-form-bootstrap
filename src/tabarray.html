@@ -1,6 +1,4 @@
-
-<div ng-init="selected = { tab: 0 }"
-     ng-model="modelArray" schema-validate="form"
+<div ng-model="modelArray" schema-validate="form"
      sf-field-model="sf-new-array"
      sf-new-array
      class="clearfix schema-form-tabarray schema-form-tabarray-{{form.tabType || 'left'}} {{form.htmlClass}}">
@@ -10,13 +8,13 @@
         ng-class="{ 'tabs-left': !form.tabType || form.tabType === 'left'}">
       <li sf-field-model="ng-repeat"
           ng-repeat="item in $$value$$ track by $index"
-          ng-click="$event.preventDefault() || (selected.tab = $index)"
-          ng-class="{active: selected.tab === $index}">
+          ng-click="$event.preventDefault() || (form.selectedTab = $index)"
+          ng-class="{active: form.selectedTab === $index}">
           <a href="#">{{interp(form.title,{'$index':$index, value: item}) || $index}}</a>
       </li>
       <li ng-hide="form.readonly"
           ng-disabled="form.schema.maxItems <= modelArray.length"
-          ng-click="$event.preventDefault() || (selected.tab = appendToArray().length - 1)">
+          ng-click="$event.preventDefault() || (form.selectedTab = appendToArray().length - 1)">
         <a href="#">
           <i class="glyphicon glyphicon-plus"></i>
           {{ form.add || 'Add'}}
@@ -27,18 +25,18 @@
 
   <div ng-class="{'col-xs-9': !form.tabType || form.tabType === 'left' || form.tabType === 'right'}">
     <div class="tab-content {{form.fieldHtmlClass}}">
-      <div class="tab-pane clearfix tab{{selected.tab}} index{{$index}}"
+      <div class="tab-pane clearfix tab{{form.selectedTab}} index{{$index}}"
            sf-field-model="ng-repeat"
            ng-repeat="item in $$value$$ track by $index"
-           ng-show="selected.tab === $index"
-           ng-class="{active: selected.tab === $index}">
+           ng-show="form.selectedTab === $index"
+           ng-class="{active: form.selectedTab === $index}">
 
            <div schema-form-array-items></div>
 
            <div class="row">
              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-left">
                <button ng-hide="form.readonly"
-                       ng-click="selected.tab = indexDown($index)"
+                       ng-click="form.selectedTab = indexDown($index)"
                        ng-disabled="$index <= 0"
                        type="button"
                        class="btn {{ form.style.moveUp || 'btn-info' }}">
@@ -47,7 +45,7 @@
                </button>
 
                 <button ng-hide="form.readonly"
-                       ng-click="selected.tab = indexUp($index)"
+                       ng-click="form.selectedTab = indexUp($index)"
                        ng-disabled="$index >= modelArray.length - 1"
                        type="button"
                        class="btn {{ form.style.moveDown || 'btn-info' }}">
@@ -58,7 +56,7 @@
 
              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right">
                <button ng-hide="form.readonly"
-                       ng-click="selected.tab = deleteFromArray($index).length - 1"
+                       ng-click="form.selectedTab = deleteFromArray($index).length - 1"
                        ng-disabled="form.schema.minItems >= modelArray.length"
                        type="button"
                        class="btn {{ form.style.remove || 'btn-default' }}">
@@ -79,13 +77,13 @@
     <ul class="nav nav-tabs tabs-right">
       <li  sf-field-model="ng-repeat"
           ng-repeat="item in $$value$$ track by $index"
-          ng-click="$event.preventDefault() || (selected.tab = $index)"
-          ng-class="{active: selected.tab === $index}">
+          ng-click="$event.preventDefault() || (form.selectedTab = $index)"
+          ng-class="{active: form.selectedTab === $index}">
           <a href="#">{{interp(form.title,{'$index':$index, value: item}) || $index}}</a>
       </li>
       <li ng-hide="form.readonly"
           ng-disabled="form.schema.maxItems <= modelArray.length"
-          ng-click="$event.preventDefault() || (selected.tab = appendToArray().length - 1)">
+          ng-click="$event.preventDefault() || (form.selectedTab = appendToArray().length - 1)">
         <a href="#">
           <i class="glyphicon glyphicon-plus"></i>
           {{ form.add || 'Add'}}

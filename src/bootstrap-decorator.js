@@ -19,13 +19,14 @@ function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
         var div = document.createElement('div');
         div.className = 'tab-pane';
         div.setAttribute('ng-disabled', 'form.readonly');
-        div.setAttribute('ng-show', 'selected.tab === ' + index);
-        div.setAttribute('ng-class', '{active: selected.tab === ' + index + '}');
+        div.setAttribute('ng-show', 'form.selectedTab === ' + index);
+        div.setAttribute('ng-class', '{active: form.selectedTab === ' + index + '}');
 
         var childFrag = args.build(tab.items, args.path + '.tabs[' + index + '].items', args.state);
         div.appendChild(childFrag);
         tabContent.appendChild(div);
       });
+      args.form.selectedTab = 0;
     }
   };
 
@@ -38,6 +39,7 @@ function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
     } else {
       args.form['sortOptions'] = {items: 'li:not(:last-child)'};
     }
+    args.form.selectedTab = 0;
   }
 
   var selectPlaceholder = function(args) {
