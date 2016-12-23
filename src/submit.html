@@ -1,15 +1,19 @@
 <span class="schema-form-submit {{form.htmlClass}}">
   <input type="submit"
          class="btn {{ form.style || 'btn-primary' }} {{form.fieldHtmlClass}}"
+         ng-class="{disabled: evalExpr('$$ctrl$$').httpPending}"
          value="{{form.title}}"
-         ng-disabled="form.readonly"
+         ng-disabled="form.readonly || evalExpr('$$ctrl$$').httpPending"
          ng-if="form.type === 'submit'">
   <button class="btn {{ form.style || 'btn-default' }}"
           type="button"
+          ng-class="{disabled: evalExpr('$$ctrl$$').httpPending}"
           ng-click="buttonClick($event,form)"
-          ng-disabled="form.readonly"
+          ng-disabled="form.readonly || evalExpr('$$ctrl$$').httpPending"
           ng-if="form.type !== 'submit'">
       <span ng-if="form.icon" class="{{form.icon}}"></span>
       {{form.title}}
+      <span ng-show="form.httpPending" data-placement="right" class="glyphicon rds-spinner-icon-sm" aria-hidden="true"></span>
   </button>
+
 </span>

@@ -3,7 +3,10 @@
   "authors": [
     "David Jensen (Textalk) <david.lgj@gmail.com>"
   ],
-  "main": "bootstrap-decorator.js",
+  "main": [
+    "bootstrap-decorator.js",
+    "bootstrap-decorator.css"
+  ],
   "description": "Bootstrap 3 decorator for Angular Schema Form",
   "keywords": [
     "angular-schema-form-decorator",
