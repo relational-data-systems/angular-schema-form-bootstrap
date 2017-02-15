@@ -239,7 +239,16 @@ function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
 
         function initInternalModel(model) {
             if(model) {
+              try {
                 vm.date = new moment(model, vm.dateFormat);
+                if(!vm.date.isValid()) {
+                  $log.debug("invalid while converting to date", model);
+                  vm.date = new Date(model);
+                }
+              } catch (e) {
+                $log.debug("exception while converting to date", model);
+                vm.date = new Date(model);
+              }              
             }
             if (form.defaultDate == "today") {
                 vm.ngModelController.$setViewValue(moment(vm.date));
