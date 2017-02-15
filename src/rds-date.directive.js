@@ -38,7 +38,7 @@
 
         function initInternalModel(model) {
             if(model) {
-                vm.date = new Date(model);
+                vm.date = new moment(model, vm.dateFormat);
             }
             if (form.defaultDate == "today") {
                 vm.ngModelController.$setViewValue(moment(vm.date));
@@ -70,9 +70,12 @@
 
         function onBlurCommit(newValue) {
             var newDate = moment(newValue);
+            newDate.toJSON = function () {
+              return this.local().format(vm.dateFormat);
+            }
             if (!moment(newDate).isValid()) {
                 newDate = undefined;
-            }
+            }            
             vm.ngModelController.$setViewValue(newDate);
             vm.ngModelController.$commitViewValue();
         }
