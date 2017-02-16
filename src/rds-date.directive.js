@@ -29,6 +29,8 @@
 
         var form = $scope.form;
         var model = $scope.model;
+        //date sent to server will be always in this format
+        var isoFormat = "YYYY-MM-DD";
 
         vm.ngModelController = $element.controller('ngModel');
         vm.date = form.defaultDate == "today" ? new Date() : undefined;
@@ -39,7 +41,7 @@
         function initInternalModel(model) {
             if(model) {
               try {
-                vm.date = new moment(model, vm.dateFormat);
+                vm.date = new moment(model, isoFormat);
                 if(!vm.date.isValid()) {
                   $log.debug("invalid while converting to date", model);
                   vm.date = new Date(model);
@@ -80,7 +82,7 @@
         function onBlurCommit(newValue) {
             var newDate = moment(newValue);
             newDate.toJSON = function () {
-              return this.local().format(vm.dateFormat);
+              return this.local().format(isoFormat);
             }
             if (!moment(newDate).isValid()) {
                 newDate = undefined;
