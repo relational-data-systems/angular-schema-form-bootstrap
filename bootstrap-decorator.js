@@ -112,7 +112,7 @@ function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
     'radios-inline': {template: base + 'radios-inline.html', builder: defaults},
     radiobuttons: {template: base + 'radio-buttons.html', builder: defaults},
     help: {template: base + 'help.html', builder: defaults},
-    keyContainer: {template: base + 'key-container.html', builder: [sfField, ngModel, simpleTransclusion, condition]},
+    keyContainer: {template: base + 'key-container.html', builder: [sfField, ngModel, ngModelOptions, simpleTransclusion, condition]},
     date: {template: base + 'date.html', builder: defaults},
     'default': {template: base + 'default.html', builder: defaults}
   }, []);
