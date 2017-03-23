@@ -8,7 +8,7 @@ function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
   var sfField             = sfBuilderProvider.builders.sfField;
   var condition           = sfBuilderProvider.builders.condition;
   var array               = sfBuilderProvider.builders.array;
-  var complexValidation   = sfBuilderProvider.builders.complexValidation;
+  var jsExpression   = sfBuilderProvider.builders.jsExpression;
 
   // Tabs is so bootstrap specific that it stays here.
   var tabs = function(args) {
@@ -69,7 +69,7 @@ function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
     }
   };
 
-  var defaults = [sfField, ngModel, ngModelOptions, condition, complexValidation];
+  var defaults = [sfField, ngModel, ngModelOptions, condition, jsExpression];
   decoratorsProvider.defineDecorator('bootstrapDecorator', {
     textarea: {template: base + 'textarea.html', builder: defaults},
     fieldset: {template: base + 'fieldset.html', builder: [sfField, simpleTransclusion, condition]},
