@@ -1,3 +1,7 @@
+<!--
+  RDS: this template is overrided by rds-asf-masked-input/src/rds-asf-masked-input.template.html
+       Please update that one instead.
+-->
 <div class="form-group schema-form-{{form.type}} {{form.htmlClass}}"
      ng-class="{'has-error': form.disableErrorState !== true && hasError(), 'has-success': form.disableSuccessState !== true && hasSuccess(), 'has-feedback': form.feedback !== false, 'required': form.required || form.schema.jsExpression}">
   <label class="control-label {{form.labelHtmlClass}}" ng-class="{'sr-only': !showTitle()}" for="{{form.key.slice(-1)[0]}}">
