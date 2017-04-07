@@ -69,7 +69,8 @@ function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
     }
   };
 
-  var defaults = sfBuilderProvider.builders.stdBuilders;
+  // var defaults = [sfField, ngModel, ngModelOptions, condition, jsExpression];
+  var defaults = sfBuilderProvider.stdBuilders;
   decoratorsProvider.defineDecorator('bootstrapDecorator', {
     textarea: {template: base + 'textarea.html', builder: defaults},
     fieldset: {template: base + 'fieldset.html', builder: [sfField, simpleTransclusion, condition]},
