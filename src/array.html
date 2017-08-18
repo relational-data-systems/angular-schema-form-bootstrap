@@ -33,7 +33,7 @@
 
   <div ng-if="!$$value$$.length && htmlWhenEmpty" ng-bind-html="htmlWhenEmpty"></div>
 
-  <div class="clearfix padding-15px" ng-model="modelArray" schema-validate="form">
+  <div class="clearfix schema-form-array-footer" ng-model="modelArray" schema-validate="form">
     <div class="help-block"
          ng-show="(hasError() && errorMessage(schemaError())) || form.description"
          ng-bind-html="(hasError() && errorMessage(schemaError())) || form.description"></div>
