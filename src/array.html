@@ -11,8 +11,7 @@
         <button ng-hide="form.readonly || form.remove === null"
                 ng-click="deleteFromArray($index)"
                 ng-disabled="form.schema.minItems >= modelArray.length"
-                style="position: absolute; z-index: 20; right: 5px; top: 5px;"
-                type="button" class="close pull-right">
+                type="button" class="close pull-right sf-array-close-button">
                 <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
         </button>
       </li>
@@ -25,8 +24,7 @@
         <button ng-hide="form.readonly || form.remove === null"
                 ng-click="deleteFromArray($index)"
                 ng-disabled="form.schema.minItems >= modelArray.length"
-                style="position: absolute; z-index: 20; right: 5px; top: 5px;"
-                type="button" class="close pull-right">
+                type="button" class="close pull-right sf-array-close-button">
                 <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
         </button>
       </li>
@@ -35,7 +33,7 @@
 
   <div ng-if="!$$value$$.length && htmlWhenEmpty" ng-bind-html="htmlWhenEmpty"></div>
 
-  <div class="clearfix" style="padding: 15px;" ng-model="modelArray" schema-validate="form">
+  <div class="clearfix schema-form-array-footer" ng-model="modelArray" schema-validate="form">
     <div class="help-block"
          ng-show="(hasError() && errorMessage(schemaError())) || form.description"
          ng-bind-html="(hasError() && errorMessage(schemaError())) || form.description"></div>
