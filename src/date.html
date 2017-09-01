@@ -1,16 +1,16 @@
-<div class="form-group schema-form-{{form.type}} {{form.htmlClass}}"
+<div class="form-group schema-form-{{::form.type}} {{::form.htmlClass}}"
      ng-class="{'has-error': form.disableErrorState !== true && hasError(), 'has-success': form.disableSuccessState !== true && hasSuccess(), 'has-feedback': form.feedback !== false, 'required': form.required }">
-  <label class="control-label {{form.labelHtmlClass}}" ng-class="{'sr-only': !showTitle()}" for="{{form.key.slice(-1)[0]}}">{{form.title}}</label>
+  <label class="control-label {{::form.labelHtmlClass}}" ng-class="{'sr-only': !showTitle()}" for="{{::form.key.slice(-1)[0]}}">{{::form.title}}</label>
 
-  <div id="{{form.key.slice(-1)[0]}}"
+  <div id="{{::form.key.slice(-1)[0]}}"
        ng-show="form.key"
        rds-date
        sf-field-model="replaceAll"
        ng-init="initInternalModel($$value$$);"
        ng-model="$$value$$">
- <input type="text" class="form-control {{form.fieldHtmlClass}}" ng-disabled="form.readonly" sf-changed="form" schema-validate="form"
+ <input type="text" class="form-control {{::form.fieldHtmlClass}}" ng-disabled="form.readonly" sf-changed="form" schema-validate="form"
         date-time ng-model="dateCtrl.date" view="date" max-view="year" min-view="date" date-change="pickerChangeDate" ng-blur="onBlurCommit(dateCtrl.date);"
-        format="{{dateCtrl.dateFormat}}" min-date="minDate" max-date="maxDate" />
+        format="{{::dateCtrl.dateFormat}}" min-date="minDate" max-date="maxDate" />
 </div>
 
 <span ng-if="form.feedback !== false"
@@ -19,7 +19,7 @@
      aria-hidden="true"></span>
 
 <span ng-if="hasError() || hasSuccess()"
-     id="{{form.key.slice(-1)[0] + 'Status'}}"
+     id="{{::form.key.slice(-1)[0] + 'Status'}}"
      class="sr-only">{{ hasSuccess() ? '(success)' : '(error)' }}</span>
 
 <div class="help-block" sf-message="form.description"></div>

@@ -1,13 +1,13 @@
 <div sf-field-model="sf-new-array"
      sf-new-array
-     class="form-group schema-form-checkboxes {{form.htmlClass}}"
+     class="form-group schema-form-checkboxes {{::form.htmlClass}}"
      ng-class="{'has-error': form.disableErrorState !== true &&  hasError(), 'has-success': form.disableSuccessState !== true &&  hasSuccess(), 'required': form.required}">
-  <label class="control-label {{form.labelHtmlClass}}"
+  <label class="control-label {{::form.labelHtmlClass}}"
          sf-field-model
          schema-validate="form"
          ng-show="showTitle()">
-         {{form.title}}
-         <a ng-if="form.tooltip" data-toggle="tooltip" data-placement="right" title="{{form.tooltip}}">
+         {{::form.title}}
+         <a ng-if="form.tooltip" data-toggle="tooltip" data-placement="right" title="{{::form.tooltip}}">
            <i class='glyphicon glyphicon-info-sign'></i>
          </a>
  </label>
@@ -19,14 +19,14 @@
       <input type="checkbox"
              ng-disabled="form.readonly"
              sf-changed="form"
-             class="{{form.fieldHtmlClass}}"
+             class="{{::form.fieldHtmlClass}}"
              ng-model="titleMapValues[$index]"
-             name="{{form.key.slice(-1)[0]}}">
+             name="{{::form.key.slice(-1)[0]}}">
       <span ng-bind-html="form.titleMap[$index].name"></span>
     </label>
   </div>
 
-  <rds-multi-columns size="{{form.titleMap.length}}" ng-if="form.columns > 1">
+  <rds-multi-columns size="{{::form.titleMap.length}}" ng-if="form.columns > 1">
     <!-- Transcluded stuff below -->
     <div ng-repeat="val in titleMapValues.slice($parent.colCtrl.indexFrom, $parent.colCtrl.indexTo) track by $index"
        class="checkbox">
@@ -34,9 +34,9 @@
           <input type="checkbox"
                  ng-disabled="form.readonly"
                  sf-changed="form"
-                 class="{{form.fieldHtmlClass}}"
+                 class="{{::form.fieldHtmlClass}}"
                  ng-model="titleMapValues[$index + $parent.$parent.colCtrl.indexFrom]"
-                 name="{{form.key.slice(-1)[0]}}">
+                 name="{{::form.key.slice(-1)[0]}}">
           <span ng-bind-html="form.titleMap[$index + $parent.$parent.colCtrl.indexFrom].name"></span>
         </label>
     </div>

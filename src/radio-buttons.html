@@ -1,9 +1,9 @@
-<div class="form-group schema-form-radiobuttons {{form.htmlClass}}"
+<div class="form-group schema-form-radiobuttons {{::form.htmlClass}}"
      ng-class="{'has-error': form.disableErrorState !== true &&  hasError(), 'has-success': form.disableSuccessState !== true &&  hasSuccess(), 'required': form.required}">
   <div>
-    <label class="control-label {{form.labelHtmlClass}}" ng-show="showTitle()">
-      {{form.title}}
-      <a ng-if="form.tooltip" data-toggle="tooltip" data-placement="right" title="{{form.tooltip}}">
+    <label class="control-label {{::form.labelHtmlClass}}" ng-show="showTitle()">
+      {{::form.title}}
+      <a ng-if="form.tooltip" data-toggle="tooltip" data-placement="right" title="{{::form.tooltip}}">
         <i class='glyphicon glyphicon-info-sign'></i>
       </a>
     </label>
@@ -13,13 +13,13 @@
            ng-class="{ active: item.value === $$value$$ }"
            ng-repeat="item in form.titleMap">
       <input type="radio"
-             class="{{form.fieldHtmlClass}} hidden"
+             class="{{::form.fieldHtmlClass}} hidden"
              sf-changed="form"
              ng-disabled="form.readonly"
              sf-field-model
              schema-validate="form"
              ng-value="item.value"
-             name="{{form.key.join('.')}}">
+             name="{{::form.key.join('.')}}">
       <span ng-bind-html="item.name"></span>
     </label>
   </div>

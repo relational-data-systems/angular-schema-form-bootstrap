@@ -1,10 +1,10 @@
-<div  class="schema-form-array {{form.htmlClass}}"
+<div  class="schema-form-array {{::form.htmlClass}}"
       sf-field-model="sf-new-array"
       sf-new-array>
-  <label class="control-label" ng-show="showTitle()">{{ form.title }}</label>
+  <label class="control-label" ng-show="showTitle()">{{::form.title }}</label>
   <div ng-hide="!$$value$$.length && htmlWhenEmpty">
     <ol class="list-group" sf-field-model ng-if="form.disableItemDnd">
-      <li class="list-group-item {{form.fieldHtmlClass}}"
+      <li class="list-group-item {{::form.fieldHtmlClass}}"
           schema-form-array-items
           sf-field-model="ng-repeat"
           ng-repeat="item in $$value$$ track by $index">
@@ -17,7 +17,7 @@
       </li>
     </ol>
     <ol class="list-group" sf-field-model ui-sortable="form.sortOptions" ng-if="!form.disableItemDnd">
-      <li class="list-group-item {{form.fieldHtmlClass}}"
+      <li class="list-group-item {{::form.fieldHtmlClass}}"
           schema-form-array-items
           sf-field-model="ng-repeat"
           ng-repeat="item in $$value$$ track by $index">
@@ -42,9 +42,9 @@
             ng-click="appendToArray()"
             ng-disabled="form.schema.maxItems <= modelArray.length"
             type="button"
-            class="btn {{ form.style.add || 'btn-default' }} pull-right">
+            class="btn {{:: form.style.add || 'btn-default' }} pull-right">
       <i class="glyphicon glyphicon-plus"></i>
-      {{ form.add || 'Add'}}
+      {{:: form.add || 'Add'}}
     </button>
   </div>
 </div>

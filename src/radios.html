@@ -1,16 +1,16 @@
-<div class="form-group schema-form-radios {{form.htmlClass}}" ng-class="{'has-error': form.disableErrorState !== true &&  hasError(), 'has-success': form.disableSuccessState !== true && hasSuccess(), 'required': form.required}">
-  <label class="control-label {{form.labelHtmlClass}}"
+<div class="form-group schema-form-radios {{::form.htmlClass}}" ng-class="{'has-error': form.disableErrorState !== true &&  hasError(), 'has-success': form.disableSuccessState !== true && hasSuccess(), 'required': form.required}">
+  <label class="control-label {{::form.labelHtmlClass}}"
          sf-field-model schema-validate="form"
          ng-show="showTitle()">
-         {{form.title}}
-         <a ng-if="form.tooltip" data-toggle="tooltip" data-placement="right" title="{{form.tooltip}}">
+         {{::form.title}}
+         <a ng-if="form.tooltip" data-toggle="tooltip" data-placement="right" title="{{::form.tooltip}}">
            <i class='glyphicon glyphicon-info-sign'></i>
          </a>
   </label>
   <div ng-if="!form.columns || form.columns === 1" class="radio" ng-repeat="entry in form.titleMap">
     <label>
       <input type="radio"
-             class="{{form.fieldHtmlClass}}"
+             class="{{::form.fieldHtmlClass}}"
              sf-changed="form"
              ng-disabled="form.readonly"
              sf-field-model
@@ -21,12 +21,12 @@
     </label>
   </div>
 
-  <rds-multi-columns size="{{form.titleMap.length}}" ng-if="form.columns > 1">
+  <rds-multi-columns size="{{::form.titleMap.length}}" ng-if="form.columns > 1">
     <!-- Transcluded stuff below -->
     <div class="radio" ng-repeat="entry in form.titleMap.slice($parent.colCtrl.indexFrom, $parent.colCtrl.indexTo)">
       <label>
         <input type="radio"
-               class="{{form.fieldHtmlClass}}"
+               class="{{::form.fieldHtmlClass}}"
                sf-changed="form"
                ng-disabled="form.readonly"
                sf-field-model

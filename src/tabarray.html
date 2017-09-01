@@ -1,7 +1,7 @@
 <div ng-model="modelArray" schema-validate="form"
      sf-field-model="sf-new-array"
      sf-new-array
-     class="clearfix schema-form-tabarray schema-form-tabarray-{{form.tabType || 'left'}} {{form.htmlClass}}">
+     class="clearfix schema-form-tabarray schema-form-tabarray-{{::form.tabType || 'left'}} {{::form.htmlClass}}">
   <div ng-if="!form.tabType || form.tabType !== 'right'"
        ng-class="{'col-xs-3': !form.tabType || form.tabType === 'left'}">
     <ul class="nav nav-tabs"
@@ -17,15 +17,15 @@
           ng-click="$event.preventDefault() || (form.selectedTab = appendToArray().length - 1)">
         <a href="#">
           <i class="glyphicon glyphicon-plus"></i>
-          {{ form.add || 'Add'}}
+          {{:: form.add || 'Add'}}
           </a>
       </li>
     </ul>
   </div>
 
   <div ng-class="{'col-xs-9': !form.tabType || form.tabType === 'left' || form.tabType === 'right'}">
-    <div class="tab-content {{form.fieldHtmlClass}}">
-      <div class="tab-pane clearfix tab{{form.selectedTab}} index{{$index}}"
+    <div class="tab-content {{::form.fieldHtmlClass}}">
+      <div class="tab-pane clearfix tab{{::form.selectedTab}} index{{::$index}}"
            sf-field-model="ng-repeat"
            ng-repeat="item in $$value$$ track by $index"
            ng-show="form.selectedTab === $index"
@@ -39,18 +39,18 @@
                        ng-click="form.selectedTab = indexDown($index)"
                        ng-disabled="$index <= 0"
                        type="button"
-                       class="btn {{ form.style.moveUp || 'btn-info' }}">
+                       class="btn {{:: form.style.moveUp || 'btn-info' }}">
                  <i class="glyphicon glyphicon-arrow-up"></i>
-                 {{ form.moveUp || 'Move Up'}}
+                 {{:: form.moveUp || 'Move Up'}}
                </button>
 
                 <button ng-hide="form.readonly"
                        ng-click="form.selectedTab = indexUp($index)"
                        ng-disabled="$index >= modelArray.length - 1"
                        type="button"
-                       class="btn {{ form.style.moveDown || 'btn-info' }}">
+                       class="btn {{:: form.style.moveDown || 'btn-info' }}">
                  <i class="glyphicon glyphicon-arrow-down"></i>
-                 {{ form.moveDown|| 'Move Down'}}
+                 {{:: form.moveDown|| 'Move Down'}}
                </button>
              </div>
 
@@ -59,10 +59,10 @@
                        ng-click="form.selectedTab = deleteFromArray($index).length - 1"
                        ng-disabled="form.schema.minItems >= modelArray.length"
                        type="button"
-                       class="btn {{ form.style.remove || 'btn-default' }}">
+                       class="btn {{:: form.style.remove || 'btn-default' }}">
                  <i class="glyphicon glyphicon-trash"></i>
-                 {{ form.remove || 'Remove'}}
-               </button> 
+                 {{:: form.remove || 'Remove'}}
+               </button>
              </div>
            </div>
       </div>
@@ -86,7 +86,7 @@
           ng-click="$event.preventDefault() || (form.selectedTab = appendToArray().length - 1)">
         <a href="#">
           <i class="glyphicon glyphicon-plus"></i>
-          {{ form.add || 'Add'}}
+          {{:: form.add || 'Add'}}
           </a>
       </li>
     </ul>

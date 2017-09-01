@@ -1,8 +1,8 @@
-<div class="form-group {{form.htmlClass}} schema-form-select"
+<div class="form-group {{::form.htmlClass}} schema-form-select"
      ng-class="{'has-error': form.disableErrorState !== true && hasError(), 'has-success': form.disableSuccessState !== true && hasSuccess(), 'has-feedback': form.feedback !== false, 'required': form.required}">
-  <label class="control-label {{form.labelHtmlClass}}" ng-show="showTitle()">
-    {{form.title}}
-    <a ng-if="form.tooltip" data-toggle="tooltip" data-placement="right" title="{{form.tooltip}}">
+  <label class="control-label {{::form.labelHtmlClass}}" ng-show="showTitle()">
+    {{::form.title}}
+    <a ng-if="form.tooltip" data-toggle="tooltip" data-placement="right" title="{{::form.tooltip}}">
       <i class='glyphicon glyphicon-info-sign'></i>
     </a>
   </label>
@@ -10,19 +10,19 @@
           sf-field-model
           ng-disabled="form.readonly"
           sf-changed="form"
-          class="form-control {{form.fieldHtmlClass}}"
+          class="form-control {{::form.fieldHtmlClass}}"
           schema-validate="form"
           ng-options="item.value as item.name group by item.group for item in form.titleMap"
-          name="{{form.key.slice(-1)[0]}}">
+          name="{{::form.key.slice(-1)[0]}}">
   </select>
 
   <input ng-if="form.readonly"
          value="{{selectedOptionCtrl.selected.name}}"
          rds-selected-option
          type="text"
-         placeholder="{{form.placeholder}}"
-         class="form-control {{form.fieldHtmlClass}}"
-         id="{{form.key.slice(-1)[0]}}"
+         placeholder="{{::form.placeholder}}"
+         class="form-control {{::form.fieldHtmlClass}}"
+         id="{{::form.key.slice(-1)[0]}}"
          ng-disabled="form.readonly">
 
   <div class="help-block" sf-message="form.description"></div>
