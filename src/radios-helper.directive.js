@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -7,34 +7,37 @@
 
   radiosHelper.$inject = ['$log'];
 
-  function radiosHelper($log) {
+  function radiosHelper ($log) {
     var directive = {
-      controller: Controller,
-      controllerAs: 'radiosHelper',
+      controller: RadiosHelperController,
+      controllerAs: 'radiosHelperCtrl',
       restrict: 'A',
-      scope: false 
+      scope: false
     };
     return directive;
-
   }
 
-  Controller.$inject = ['$scope']
+  RadiosHelperController.$inject = ['$scope'];
 
   /* @ngInject */
-  function Controller($scope) {
-
-  	var form = $scope.form;
+  function RadiosHelperController ($scope) {
+    var form = $scope.form;
 
     var vm = this;
     vm.getName = getName;
+    vm.markNgModelDirty = markNgModelDirty;
 
-    function getName() {
+    function getName () {
       return form.key.join('.') + _getArrayIndexIfAny();
     }
 
-    function _getArrayIndexIfAny() {
-    	var possibleIndex = $scope.$parent.$parent.$index;
-    	return angular.isNumber(possibleIndex) ? possibleIndex : '';
+    function markNgModelDirty () {
+      $scope.ngModel.$setDirty();
+    }
+
+    function _getArrayIndexIfAny () {
+      var possibleIndex = $scope.$parent.$parent.$index;
+      return angular.isNumber(possibleIndex) ? possibleIndex : '';
     }
   }
 })();

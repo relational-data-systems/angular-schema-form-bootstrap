@@ -6,6 +6,7 @@
        ng-show="form.key"
        rds-date
        sf-field-model="replaceAll"
+       remote-validation
        ng-init="initInternalModel($$value$$);"
        ng-model="$$value$$">
  <input type="text" class="form-control {{::form.fieldHtmlClass}}" ng-disabled="form.readonly" sf-changed="form" schema-validate="form"

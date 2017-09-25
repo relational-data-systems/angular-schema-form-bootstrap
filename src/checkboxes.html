@@ -4,6 +4,7 @@
      ng-class="{'has-error': form.disableErrorState !== true &&  hasError(), 'has-success': form.disableSuccessState !== true &&  hasSuccess(), 'required': form.required}">
   <label class="control-label {{::form.labelHtmlClass}}"
          sf-field-model
+         remote-validation
          schema-validate="form"
          ng-show="showTitle()">
          {{::form.title}}

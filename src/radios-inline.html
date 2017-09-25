@@ -2,7 +2,7 @@
      ng-class="{'has-error': form.disableErrorState !== true &&  hasError(), 'has-success': form.disableSuccessState !== true && hasSuccess(), 'required': form.required}">
   <label class="control-label {{::form.labelHtmlClass}}"
         ng-show="showTitle()" sf-field-model
-        schema-validate="form" >
+        schema-validate="form" remote-validation>
         {{::form.title}}
         <a ng-if="form.tooltip" data-toggle="tooltip" data-placement="right" title="{{::form.tooltip}}">
           <i class='glyphicon glyphicon-info-sign'></i>
@@ -17,7 +17,8 @@
              sf-field-model
              ng-value="item.value"
              radios-helper
-             name="{{radiosHelper.getName()}}">
+             ng-click="radiosHelperCtrl.markNgModelDirty()"
+             name="{{radiosHelperCtrl.getName()}}">
       <span ng-bind-html="item.name"></span>
     </label>
   </div>

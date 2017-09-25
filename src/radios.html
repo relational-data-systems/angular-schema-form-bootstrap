@@ -1,6 +1,6 @@
 <div class="form-group schema-form-radios {{::form.htmlClass}}" ng-class="{'has-error': form.disableErrorState !== true &&  hasError(), 'has-success': form.disableSuccessState !== true && hasSuccess(), 'required': form.required}">
   <label class="control-label {{::form.labelHtmlClass}}"
-         sf-field-model schema-validate="form"
+         sf-field-model schema-validate="form" remote-validation
          ng-show="showTitle()">
          {{::form.title}}
          <a ng-if="form.tooltip" data-toggle="tooltip" data-placement="right" title="{{::form.tooltip}}">
@@ -16,7 +16,8 @@
              sf-field-model
              ng-value="entry.value"
              radios-helper
-             name="{{radiosHelper.getName()}}">
+             ng-click="radiosHelperCtrl.markNgModelDirty()"
+             name="{{radiosHelperCtrl.getName()}}">
       <span ng-bind-html="entry.name"></span>
     </label>
   </div>
@@ -32,7 +33,8 @@
                sf-field-model
                ng-value="entry.value"
                radios-helper
-               name="{{radiosHelper.getName()}}">
+               ng-click="radiosHelperCtrl.markNgModelDirty()"
+               name="{{radiosHelperCtrl.getName()}}">
         <span ng-bind-html="entry.name"></span>
       </label>
     </div>
