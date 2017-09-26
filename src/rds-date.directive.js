@@ -59,7 +59,7 @@
       if (dateString) {
         ngModel.$setViewValue(moment(dateString).local().format(parseFormat));
       } else {
-        ngModel.$setViewValue();
+        ngModel.$setViewValue('');
       }
       ngModel.$commitViewValue();
     }

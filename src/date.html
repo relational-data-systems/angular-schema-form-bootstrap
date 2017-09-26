@@ -12,7 +12,7 @@
        remote-validation>
     <input type="text" class="form-control {{::form.fieldHtmlClass}}" ng-disabled="form.readonly"
            sf-changed="form" ng-model="dateCtrl._internalDate" view="date" max-view="year" min-view="date"
-           date-time date-change="pickerChangeDate" ng-blur="syncSchemaFormNgModel();"
+           date-time date-change="pickerChangeDate" ng-change="syncSchemaFormNgModel();"
            format="{{::form.dateViewFormat ? form.dateViewFormat : 'DD-MM-YYYY'}}"
            min-date="{{form.minDate}}" max-date="{{form.maxDate}}" />
 </div>
