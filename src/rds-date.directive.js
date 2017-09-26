@@ -28,6 +28,8 @@
     $scope.syncSchemaFormNgModel = syncSchemaFormNgModel;
 
     var form = $scope.form;
+    $scope.minDate = form.minDate ? moment(form.minDate).local() : undefined;
+    $scope.maxDate = form.maxDate ? moment(form.maxDate).local() : undefined;
     // var model = $scope.model;
     var isoFormat = 'YYYY-MM-DD'; // date sent to server will be always in this format
     var parseFormat = isoFormat;

@@ -14,7 +14,7 @@
            sf-changed="form" ng-model="dateCtrl._internalDate" view="date" max-view="year" min-view="date"
            date-time date-change="pickerChangeDate" ng-change="syncSchemaFormNgModel();"
            format="{{::form.dateViewFormat ? form.dateViewFormat : 'DD-MM-YYYY'}}"
-           min-date="{{form.minDate}}" max-date="{{form.maxDate}}" />
+           min-date="minDate" max-date="maxDate" />
 </div>
 
 <span ng-if="form.feedback !== false"
