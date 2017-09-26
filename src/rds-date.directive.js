@@ -25,70 +25,66 @@
 
     $scope.initInternalModel = initInternalModel;
     $scope.pickerChangeDate = pickerChangeDate;
-    $scope.onBlurCommit = onBlurCommit;
+    $scope.syncSchemaFormNgModel = syncSchemaFormNgModel;
 
     var form = $scope.form;
-    var model = $scope.model;
-        // date sent to server will be always in this format
-    var isoFormat = 'YYYY-MM-DD';
+    // var model = $scope.model;
+    var isoFormat = 'YYYY-MM-DD'; // date sent to server will be always in this format
+    var parseFormat = isoFormat;
+    var ngModel = $element.controller('ngModel'); // Points to the schema form model
 
-    vm.ngModelController = $element.controller('ngModel');
-    vm.date = form.defaultDate == 'today' ? new Date() : undefined;
-    vm.dateFormat = form.dateFormat ? form.dateFormat : 'DD-MM-YYYY';
-    $scope.minDate = form.minDate ? form.minDate : undefined;
-    $scope.maxDate = form.maxDate ? form.maxDate : undefined;
+    vm._internalDate /* Date */ = undefined; // Pointed by the internal ngModel
 
-    function initInternalModel (model) {
-      if (model) {
+    function initInternalModel (initDate) {
+      if (initDate) {
         try {
-          vm.date = new moment(model, isoFormat);
-          if (!vm.date.isValid()) {
-            $log.debug('invalid while converting to date', model);
-            vm.date = new Date(model);
+          var _temp = new moment(initDate, parseFormat);
+          if (!_temp.isValid()) {
+            $log.debug('rdsDate#initInternalModel - invalid while converting to ISO date:', initDate);
+            vm._internalDate = new Date(initDate);
+          } else {
+            vm._internalDate = _temp.local().toDate();
           }
         } catch (e) {
-          $log.debug('exception while converting to date', model);
-          vm.date = new Date(model);
+          $log.debug('rdsDate#initInternalModel - exception while converting to date:', initDate);
+        }
+      } else if (form.defaultDate === 'today') {
+        var today = moment().local();
+        vm._internalDate = today.toDate();
+        _updateNgModel(today.format(parseFormat));
+      }
+    }
+
+    function _updateNgModel (dateString) { // default to today
+      if (dateString) {
+        ngModel.$setViewValue(moment(dateString).local().format(parseFormat));
+      } else {
+        ngModel.$setViewValue();
+      }
+      ngModel.$commitViewValue();
+    }
+
+    function pickerChangeDate (modelName, pickedDate) {
+      $log.debug('rdsDate#pickerChangeDate - new date: ', pickedDate);
+      _updateNgModel(pickedDate);
+    }
+
+    // Watch the model value, and update the internal value
+    $scope.$watch(
+      function () {
+        return ngModel.$modelValue;
+      },
+      function (newValue) {
+        if (newValue) {
+          vm._internalDate = moment(newValue, parseFormat).local().toDate();
+        } else {
+          vm._internalDate = undefined;
         }
       }
-      if (form.defaultDate == 'today') {
-        vm.ngModelController.$setViewValue(moment(vm.date));
-        vm.ngModelController.$commitViewValue();
-      }
-    }
+    );
 
-    function pickerChangeDate (modelName, newDate) {
-      $log.debug('DATE CHANGE', newDate);
-      vm.ngModelController.$setViewValue(moment(newDate));
-      vm.ngModelController.$commitViewValue();
-    }
-
-        // Watch the model value, and update the internal value
-    $scope.$watch(
-            function () {
-              return vm.ngModelController.$modelValue;
-            },
-            function (newValue, oldValue) {
-              if (moment(newValue) !== moment(oldValue)) {
-                if (newValue !== undefined) {
-                  vm.date = moment(newValue);
-                } else {
-                  vm.date = newValue;
-                }
-              }
-            }
-        );
-
-    function onBlurCommit (newValue) {
-      var newDate = moment(newValue);
-      newDate.toJSON = function () {
-        return this.local().format(isoFormat);
-      };
-      if (!moment(newDate).isValid()) {
-        newDate = undefined;
-      }
-      vm.ngModelController.$setViewValue(newDate);
-      vm.ngModelController.$commitViewValue();
+    function syncSchemaFormNgModel () {
+      _updateNgModel(vm._internalDate);
     }
   }
 })();

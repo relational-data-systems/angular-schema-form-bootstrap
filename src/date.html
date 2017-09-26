@@ -6,12 +6,15 @@
        ng-show="form.key"
        rds-date
        sf-field-model="replaceAll"
-       remote-validation
        ng-init="initInternalModel($$value$$);"
-       ng-model="$$value$$">
- <input type="text" class="form-control {{::form.fieldHtmlClass}}" ng-disabled="form.readonly" sf-changed="form" schema-validate="form"
-        date-time ng-model="dateCtrl.date" view="date" max-view="year" min-view="date" date-change="pickerChangeDate" ng-blur="onBlurCommit(dateCtrl.date);"
-        format="{{::dateCtrl.dateFormat}}" min-date="minDate" max-date="maxDate" />
+       ng-model="$$value$$"
+       schema-validate="form"
+       remote-validation>
+    <input type="text" class="form-control {{::form.fieldHtmlClass}}" ng-disabled="form.readonly"
+           sf-changed="form" ng-model="dateCtrl._internalDate" view="date" max-view="year" min-view="date"
+           date-time date-change="pickerChangeDate" ng-blur="syncSchemaFormNgModel();"
+           format="{{::form.dateViewFormat ? form.dateViewFormat : 'DD-MM-YYYY'}}"
+           min-date="{{form.minDate}}" max-date="{{form.maxDate}}" />
 </div>
 
 <span ng-if="form.feedback !== false"
