@@ -2,7 +2,7 @@
       sf-field-model="sf-new-array"
       sf-new-array>
   <label class="control-label" ng-show="showTitle()">{{::form.title }}</label>
-  <div ng-hide="!$$value$$.length && htmlWhenEmpty">
+  <div sf-field-model="ng-hide" ng-hide="!$$value$$.length && htmlWhenEmpty">
     <ol class="list-group" sf-field-model ng-if="form.disableItemDnd">
       <li class="list-group-item {{::form.fieldHtmlClass}}"
           schema-form-array-items
@@ -31,7 +31,7 @@
     </ol>
   </div>
 
-  <div ng-if="!$$value$$.length && htmlWhenEmpty" ng-bind-html="htmlWhenEmpty"></div>
+  <div sf-field-model="ng-if" ng-if="!$$value$$.length && htmlWhenEmpty" ng-bind-html="htmlWhenEmpty"></div>
 
   <div class="clearfix schema-form-array-footer" ng-model="modelArray" schema-validate="form">
     <div class="help-block"
