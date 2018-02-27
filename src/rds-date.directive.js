@@ -26,6 +26,7 @@
     $scope.initInternalModel = initInternalModel;
     $scope.pickerChangeDate = pickerChangeDate;
     $scope.syncSchemaFormNgModel = syncSchemaFormNgModel;
+    
 
     var form = $scope.form;
     $scope.minDate = form.minDate ? moment(form.minDate).local() : undefined;
@@ -36,6 +37,7 @@
     var ngModel = $element.controller('ngModel'); // Points to the schema form model
 
     vm._internalDate /* Date */ = undefined; // Pointed by the internal ngModel
+    vm.setValidity = setValidity
 
     function initInternalModel (initDate) {
       if (initDate) {
@@ -78,7 +80,7 @@
       },
       function (newValue) {
         if (newValue) {
-          vm._internalDate = moment(newValue, parseFormat).local().toDate();
+          vm._internalDate = moment(newValue, parseFormat);
         } else {
           vm._internalDate = undefined;
         }
@@ -87,6 +89,10 @@
 
     function syncSchemaFormNgModel () {
       _updateNgModel(vm._internalDate);
+    }
+    
+    function setValidity(errorCode, isValid) {
+      ngModel.$setValidity(errorCode, isValid);
     }
   }
 })();
