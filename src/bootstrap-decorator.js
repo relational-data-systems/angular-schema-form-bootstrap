@@ -21,6 +21,7 @@ function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
         div.setAttribute('ng-disabled', 'form.readonly');
         div.setAttribute('ng-show', 'form.selectedTab === ' + index);
         div.setAttribute('ng-class', '{active: form.selectedTab === ' + index + '}');
+        div.setAttribute("rds-tab-index", index);
 
         var childFrag = args.build(tab.items, args.path + '.tabs[' + index + '].items', args.state);
         div.appendChild(childFrag);
