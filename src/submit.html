@@ -1,6 +1,6 @@
 <span class="schema-form-submit {{::form.htmlClass}}">
   <input type="submit"
-         class="btn {{:: form.style || 'btn-primary' }} {{::form.fieldHtmlClass}}"
+         class="btn {{:: form.style || 'btn-default' }} {{::form.fieldHtmlClass}}"
          ng-class="{disabled: evalExpr('$$ctrl$$').httpPending}"
          value="{{::form.title}}"
          ng-disabled="form.readonly || evalExpr('$$ctrl$$').httpPending"
