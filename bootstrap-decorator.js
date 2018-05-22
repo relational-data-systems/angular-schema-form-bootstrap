@@ -17,7 +17,7 @@ $templateCache.put("decorators/bootstrap/section.html","<div class=\"schema-form
 $templateCache.put("decorators/bootstrap/select.html","<div class=\"form-group {{::form.htmlClass}} schema-form-select\" ng-class=\"{\'has-error\': form.disableErrorState !== true && hasError(), \'has-success\': form.disableSuccessState !== true && hasSuccess(), \'has-feedback\': form.feedback !== false, \'required\': form.required}\"><label class=\"control-label {{::form.labelHtmlClass}}\" ng-show=\"showTitle()\">{{::form.title}} <a ng-if=\"form.tooltip\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"{{::form.tooltip}}\"><i class=\"glyphicon glyphicon-info-sign\"></i></a></label><select ng-if=\"!form.readonly\" sf-field-model=\"\" ng-disabled=\"form.readonly\" sf-changed=\"form\" remote-validation=\"\" class=\"form-control {{::form.fieldHtmlClass}}\" schema-validate=\"form\" ng-options=\"item.value as item.name group by item.group for item in form.titleMap\" name=\"{{::form.key.slice(-1)[0]}}\"></select><input ng-if=\"form.readonly\" value=\"{{selectedOptionCtrl.selected.name}}\" rds-selected-option=\"\" type=\"text\" placeholder=\"{{::form.placeholder}}\" class=\"form-control {{::form.fieldHtmlClass}}\" id=\"{{::form.key.slice(-1)[0]}}\" ng-disabled=\"form.readonly\"><div class=\"help-block\" sf-message=\"form.description\"></div></div>");
 $templateCache.put("decorators/bootstrap/submit.html","<span class=\"schema-form-submit {{::form.htmlClass}}\"><input type=\"submit\" class=\"btn {{:: form.style || \'btn-primary\' }} {{::form.fieldHtmlClass}}\" ng-class=\"{disabled: evalExpr(\'$$ctrl$$\').httpPending}\" value=\"{{::form.title}}\" ng-disabled=\"form.readonly || evalExpr(\'$$ctrl$$\').httpPending\" ng-if=\"form.type === \'submit\'\"> <button class=\"btn {{:: form.style || \'btn-default\' }}\" type=\"button\" ng-class=\"{disabled: evalExpr(\'$$ctrl$$\').httpPending}\" ng-click=\"buttonClick($event,form)\" ng-disabled=\"form.readonly || evalExpr(\'$$ctrl$$\').httpPending\" ng-if=\"form.type !== \'submit\'\"><span ng-if=\"form.icon\" class=\"{{::form.icon}}\"></span> {{::form.title}} <span ng-show=\"form.httpPending\" data-placement=\"right\" class=\"glyphicon rds-spinner-icon-sm\" aria-hidden=\"true\"></span></button></span>");
 $templateCache.put("decorators/bootstrap/tabarray.html","<div ng-model=\"modelArray\" schema-validate=\"form\" sf-field-model=\"sf-new-array\" sf-new-array=\"\" class=\"clearfix schema-form-tabarray schema-form-tabarray-{{::form.tabType || \'left\'}} {{::form.htmlClass}}\"><div ng-if=\"!form.tabType || form.tabType !== \'right\'\" ng-class=\"{\'col-xs-3\': !form.tabType || form.tabType === \'left\'}\"><ul class=\"nav nav-tabs\" ng-class=\"{ \'tabs-left\': !form.tabType || form.tabType === \'left\'}\"><li sf-field-model=\"ng-repeat\" ng-repeat=\"item in $$value$$ track by $index\" ng-click=\"$event.preventDefault() || (form.selectedTab = $index)\" ng-class=\"{active: form.selectedTab === $index}\"><a href=\"#\">{{interp(form.title,{\'$index\':$index, value: item}) || $index}}</a></li><li ng-hide=\"form.readonly\" ng-disabled=\"form.schema.maxItems <= modelArray.length\" ng-click=\"$event.preventDefault() || (form.selectedTab = appendToArray().length - 1)\"><a href=\"#\"><i class=\"glyphicon glyphicon-plus\"></i> {{:: form.add || \'Add\'}}</a></li></ul></div><div ng-class=\"{\'col-xs-9\': !form.tabType || form.tabType === \'left\' || form.tabType === \'right\'}\"><div class=\"tab-content {{::form.fieldHtmlClass}}\"><div class=\"tab-pane clearfix tab{{::form.selectedTab}} index{{::$index}}\" sf-field-model=\"ng-repeat\" ng-repeat=\"item in $$value$$ track by $index\" ng-show=\"form.selectedTab === $index\" ng-class=\"{active: form.selectedTab === $index}\"><div schema-form-array-items=\"\"></div><div class=\"row\"><div class=\"col-xs-6 col-sm-6 col-md-6 col-lg-6 text-left\"><button ng-hide=\"form.readonly\" ng-click=\"form.selectedTab = indexDown($index)\" ng-disabled=\"$index <= 0\" type=\"button\" class=\"btn {{:: form.style.moveUp || \'btn-info\' }}\"><i class=\"glyphicon glyphicon-arrow-up\"></i> {{:: form.moveUp || \'Move Up\'}}</button> <button ng-hide=\"form.readonly\" ng-click=\"form.selectedTab = indexUp($index)\" ng-disabled=\"$index >= modelArray.length - 1\" type=\"button\" class=\"btn {{:: form.style.moveDown || \'btn-info\' }}\"><i class=\"glyphicon glyphicon-arrow-down\"></i> {{:: form.moveDown|| \'Move Down\'}}</button></div><div class=\"col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right\"><button ng-hide=\"form.readonly\" ng-click=\"form.selectedTab = deleteFromArray($index).length - 1\" ng-disabled=\"form.schema.minItems >= modelArray.length\" type=\"button\" class=\"btn {{:: form.style.remove || \'btn-default\' }}\"><i class=\"glyphicon glyphicon-trash\"></i> {{:: form.remove || \'Remove\'}}</button></div></div></div><div class=\"help-block\" ng-show=\"(hasError() && errorMessage(schemaError())) || form.description\" ng-bind-html=\"(hasError() && errorMessage(schemaError())) || form.description\"></div></div></div></div><div ng-if=\"form.tabType === \'right\'\" class=\"col-xs-3\"><ul class=\"nav nav-tabs tabs-right\"><li sf-field-model=\"ng-repeat\" ng-repeat=\"item in $$value$$ track by $index\" ng-click=\"$event.preventDefault() || (form.selectedTab = $index)\" ng-class=\"{active: form.selectedTab === $index}\"><a href=\"#\">{{interp(form.title,{\'$index\':$index, value: item}) || $index}}</a></li><li ng-hide=\"form.readonly\" ng-disabled=\"form.schema.maxItems <= modelArray.length\" ng-click=\"$event.preventDefault() || (form.selectedTab = appendToArray().length - 1)\"><a href=\"#\"><i class=\"glyphicon glyphicon-plus\"></i> {{:: form.add || \'Add\'}}</a></li></ul></div>");
-$templateCache.put("decorators/bootstrap/tabs.html","<div class=\"schema-form-tabs {{::form.htmlClass}}\"><ul class=\"nav nav-tabs\"><li ng-repeat=\"tab in form.tabs\" ng-disabled=\"form.readonly\" ng-click=\"$event.preventDefault() || (form.selectedTab = $index)\" ng-class=\"{active: form.selectedTab === $index}\"><a href=\"#\">{{::tab.title}}</a></li></ul><div class=\"tab-content {{::form.fieldHtmlClass}}\"></div></div>");
+$templateCache.put("decorators/bootstrap/tabs.html","<div class=\"schema-form-tabs {{::form.htmlClass}}\" rds-tabs=\"\"><ul class=\"nav nav-tabs\"><li ng-repeat=\"tab in form.tabs\" ng-disabled=\"form.readonly\" ng-click=\"$event.preventDefault() || (rdsTabsCtrl.selectTab($index))\" ng-class=\"{active: form.selectedTab === $index}\"><a href=\"#\">{{::tab.title}}</a></li></ul><div class=\"tab-content {{::form.fieldHtmlClass}}\"></div></div>");
 $templateCache.put("decorators/bootstrap/textarea.html","<div class=\"form-group has-feedback {{::form.htmlClass}} schema-form-textarea\" ng-class=\"{\'has-error\': form.disableErrorState !== true && hasError(), \'has-success\': form.disableSuccessState !== true && hasSuccess(), \'required\': form.required}\"><label class=\"control-label {{::form.labelHtmlClass}}\" ng-class=\"{\'sr-only\': !showTitle()}\" for=\"{{::form.key.slice(-1)[0]}}\">{{::form.title}} <a ng-if=\"form.tooltip\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"{{::form.tooltip}}\"><i class=\"glyphicon glyphicon-info-sign\"></i></a></label> <textarea ng-if=\"!form.fieldAddonLeft && !form.fieldAddonRight\" class=\"form-control {{::form.fieldHtmlClass}}\" id=\"{{::form.key.slice(-1)[0]}}\" sf-changed=\"form\" placeholder=\"{{::form.placeholder}}\" ng-disabled=\"form.readonly\" sf-field-model=\"\" remote-validation=\"\" schema-validate=\"form\" name=\"{{::form.key.slice(-1)[0]}}\"> </textarea><div ng-if=\"form.fieldAddonLeft || form.fieldAddonRight\" ng-class=\"{\'input-group\': (form.fieldAddonLeft || form.fieldAddonRight)}\"><span ng-if=\"form.fieldAddonLeft\" class=\"input-group-addon\" ng-bind-html=\"form.fieldAddonLeft\"></span> <textarea class=\"form-control {{::form.fieldHtmlClass}}\" id=\"{{::form.key.slice(-1)[0]}}\" sf-changed=\"form\" placeholder=\"{{::form.placeholder}}\" ng-disabled=\"form.readonly\" sf-field-model=\"\" schema-validate=\"form\" name=\"{{::form.key.slice(-1)[0]}}\"> </textarea><span ng-if=\"form.fieldAddonRight\" class=\"input-group-addon\" ng-bind-html=\"form.fieldAddonRight\"></span></div><span class=\"help-block\" sf-message=\"form.description\"></span></div>");}]);
 angular.module('schemaForm').config(['schemaFormDecoratorsProvider', 'sfBuilderProvider', 'sfPathProvider',
 function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
@@ -42,6 +42,7 @@ function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
         div.setAttribute('ng-disabled', 'form.readonly');
         div.setAttribute('ng-show', 'form.selectedTab === ' + index);
         div.setAttribute('ng-class', '{active: form.selectedTab === ' + index + '}');
+        div.setAttribute("rds-tab-index", index);
 
         var childFrag = args.build(tab.items, args.path + '.tabs[' + index + '].items', args.state);
         div.appendChild(childFrag);
@@ -400,4 +401,69 @@ function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
     vm.selected = {};
   }
 
+})();
+(function () {
+  'use strict';
+
+  angular
+    .module('schemaForm')
+    .directive('rdsTabIndex', RdsTabIndex);
+
+  RdsTabIndex.$inject = [];
+
+  function RdsTabIndex () {
+    var directive = {      
+      restrict: 'A',
+      scope: true,
+      compile: function() {
+        return {
+          pre: function($scope, element, attributes) {
+              var tabIndex = attributes.rdsTabIndex
+              var parentHidden = $scope.$parent.containerHidden;
+              $scope.containerHidden = parentHidden || tabIndex != $scope.form.selectedTab;              
+              
+              $scope.$on('tabs.activeTab.change', function(event, args) {
+                var parentHidden = $scope.$parent.containerHidden;
+                $scope.containerHidden = parentHidden || tabIndex!=$scope.form.selectedTab;                
+              });
+            }
+        };
+      }      
+    };    
+    
+    return directive;
+  }
+})();
+
+(function () {
+  'use strict';
+
+  angular
+    .module('schemaForm')
+    .directive('rdsTabs', RdsTabs);
+
+  RdsTabs.$inject = [];
+
+  function RdsTabs () {
+    var directive = {
+      controller: RdsTabsController,
+      controllerAs: 'rdsTabsCtrl',
+      restrict: 'A',
+      scope: true
+    };
+    return directive;
+  }
+
+  RdsTabsController.$inject = ['$scope'];
+
+  /* @ngInject */
+  function RdsTabsController ($scope) {        
+    var vm = this;
+    vm.selectTab = selectTab;
+    
+    function selectTab (index) {
+      $scope.form.selectedTab = index;      
+      $scope.$broadcast("tabs.activeTab.change")
+    }    
+  }
 })();

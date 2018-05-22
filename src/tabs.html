@@ -1,8 +1,8 @@
-<div class="schema-form-tabs {{::form.htmlClass}}">
+<div class="schema-form-tabs {{::form.htmlClass}}" rds-tabs>
   <ul class="nav nav-tabs">
     <li ng-repeat="tab in form.tabs"
         ng-disabled="form.readonly"
-        ng-click="$event.preventDefault() || (form.selectedTab = $index)"
+        ng-click="$event.preventDefault() || (rdsTabsCtrl.selectTab($index))"
         ng-class="{active: form.selectedTab === $index}">
         <a href="#">{{::tab.title}}</a>
     </li>
