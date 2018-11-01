@@ -239,8 +239,12 @@ function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
     $scope.minDate = form.minDate ? moment(form.minDate).local() : undefined;
     $scope.maxDate = form.maxDate ? moment(form.maxDate).local() : undefined;
     // var model = $scope.model;
-    var isoFormat = 'YYYY-MM-DD'; // date sent to server will be always in this format
-    var parseFormat = isoFormat;
+    var isoFormatDateOnly = 'YYYY-MM-DD'; // date sent to server will be always in ISO format
+    var isoFormatDateWithTime = 'YYYY-MM-DDTHH:mm:ss';
+    var parseFormat = isoFormatDateOnly;
+    if(form.sendTime) {
+      parseFormat = isoFormatDateWithTime;
+    }
     var ngModel = $element.controller('ngModel'); // Points to the schema form model
 
     vm._internalDate /* Date */ = undefined; // Pointed by the internal ngModel
