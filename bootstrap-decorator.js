@@ -242,7 +242,7 @@ function(decoratorsProvider, sfBuilderProvider, sfPathProvider) {
     var isoFormatDateOnly = 'YYYY-MM-DD'; // date sent to server will be always in ISO format
     var isoFormatDateWithTime = 'YYYY-MM-DDTHH:mm:ss';
     var parseFormat = isoFormatDateOnly;
-    if(form.sendTime) {
+    if(form.schema.format==='date-time') {
       parseFormat = isoFormatDateWithTime;
     }
     var ngModel = $element.controller('ngModel'); // Points to the schema form model
